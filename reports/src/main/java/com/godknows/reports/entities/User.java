@@ -1,11 +1,14 @@
 package com.godknows.reports.entities;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -15,12 +18,14 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String fullName;
+	private String name;
 	private String email;
 	private String phone;
 	private LocalDate birthDate;
 	private String password;
 	
+	@OneToMany(mappedBy ="user")
+	private List<ReportDaily> reports = new ArrayList<>();
 	
 	/*
 	@ManyToMany(fetch=FetchType.EAGER)
@@ -35,9 +40,9 @@ public class User {
 	}
 
 
-	public User(Long id, String fullName, String email, String phone, LocalDate birthDate, String password) {
+	public User(Long id, String name, String email, String phone, LocalDate birthDate, String password) {
 		this.id = id;
-		this.fullName = fullName;
+		this.name = name;
 		this.email = email;
 		this.phone = phone;
 		this.birthDate = birthDate;
@@ -55,13 +60,13 @@ public class User {
 	}
 
 
-	public String getFullName() {
-		return fullName;
+	public String getname() {
+		return name;
 	}
 
 
-	public void setFullName(String fullName) {
-		this.fullName = fullName;
+	public void setname(String name) {
+		this.name = name;
 	}
 
 
@@ -103,7 +108,6 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
 	
 
 }
