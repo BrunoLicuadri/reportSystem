@@ -3,7 +3,6 @@ package com.godknows.reports.dtos;
 import java.time.Instant;
 
 import com.godknows.reports.entities.ReportDaily;
-import com.godknows.reports.entities.User;
 
 public class ReportDailyDTO {
 
@@ -11,14 +10,14 @@ public class ReportDailyDTO {
 	private String text;
 	private Instant moment;
 	
-	private User user;
+	private UserDTO user;
 	
 	
 	public ReportDailyDTO() {
 	}
 
 
-	public ReportDailyDTO(Long id, String text, Instant moment, User user) {
+	public ReportDailyDTO(Long id, String text, Instant moment, UserDTO user) {
 		this.id = id;
 		this.text = text;
 		this.moment = moment;
@@ -29,7 +28,7 @@ public class ReportDailyDTO {
 		id = entity.getId();
 		text = entity.getText();
 		moment = entity.getMoment();
-		user = entity.getUser();
+		user = new UserDTO(entity.getUser());
 	}
 
 
@@ -48,7 +47,7 @@ public class ReportDailyDTO {
 	}
 
 
-	public User getUser() {
+	public UserDTO getUser() {
 		return user;
 	}
 	
