@@ -2,6 +2,8 @@ package com.godknows.reports.services;
 
 import java.time.Instant;
 
+import javax.persistence.EntityNotFoundException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -41,9 +43,10 @@ public class ReportDailyService {
 		// LocalDate localDate = LocalDate.parse(date, reportDate); 
 
 		Page<ReportDaily> result = repository.searchByDate(date, pageable);
-		if(result.getSize() == 0) {
-			throw new ResourceNotFoundException("Recurso não localizado.");
+		if(result.getNumberOfElements() == 0) {
+			throw new ResourceNotFoundException("Data informada não localizado.");
 		}
+		
 		return result.map(x-> new ReportDailyDTO(x));
 	}
 	
@@ -55,6 +58,20 @@ public class ReportDailyService {
 		return new ReportDailyDTO(entity);
 	}
 	
+	@Transactional
+	public ReportDailyDTO update(Long id, ReportDailyDTO dto) {
+		try {
+			ReportDaily entity = repository.getReferenceById(id);
+			copyDtoToEntity(dto, entity);
+			entity = repository.save(entity);
+			return new ReportDailyDTO(entity);
+		}
+		catch(EntityNotFoundException e){
+			throw new ResourceNotFoundException("Relatório não encontrado");
+		}
+		
+	}
+
 	
 	
 	@Transactional(readOnly=true)
