@@ -7,7 +7,15 @@ INSERT INTO tb_user (name, email, phone, password, birth_date) VALUES ('SubSindi
 INSERT INTO tb_user (name, email, phone, password, birth_date) VALUES ('Administradora', 'administradora@gmail.com', '977777777', '123456', '1960-06-16');
 
 
-INSERT INTO tb_report (moment, text, user_id) VALUES (TIMESTAMP WITH TIME ZONE '2022-07-25T05:00:00Z', 'Queda de energia das 05:00 as 06:22', 1);
-INSERT INTO tb_report (moment, text, user_id) VALUES (TIMESTAMP WITH TIME ZONE '2022-07-29T15:15:00Z', 'Morador 1818 retirou sua encomenda', 2);
-INSERT INTO tb_report (moment, text, user_id) VALUES (TIMESTAMP WITH TIME ZONE '2022-08-03T18:22:00Z', 'Briga de casal e Polícia acionado. Sindicos cientes.', 3);
-INSERT INTO tb_report (moment, text, user_id) VALUES (TIMESTAMP WITH TIME ZONE '2022-08-03T21:22:00Z', 'Elevador parado. BTA acionado e aguardando retorno.', 4);
+INSERT INTO tb_report (date, time, text, user_id) VALUES ('2022-07-25', '05:00', 'Queda de energia das 05:00 as 06:22', 1);
+INSERT INTO tb_report (date, time, text, user_id) VALUES ('2022-07-29', '15:15', 'Morador 1818 retirou sua encomenda', 2);
+INSERT INTO tb_report (date, time, text, user_id) VALUES ('2022-08-03', '18:22', 'Briga de casal e Polícia acionado. Sindicos cientes.', 3);
+INSERT INTO tb_report (date, time, text, user_id) VALUES ('2022-08-03', '21:22', 'Elevador parado. BTA acionado e aguardando retorno.', 4);
+INSERT INTO tb_report (date, time, text, user_id) VALUES ('2022-08-04', '07:00', 'Morador X reportou vazamento de água', 1);
+INSERT INTO tb_report (date, time, text, user_id) VALUES ('2022-08-04', '15:15', 'Morador reclamou das esteiras da academia quebrada', 1);
+INSERT INTO tb_report (date, time, text, user_id) VALUES ('2022-08-04', '19:22', 'Lampadas queimadas aqui e acolá', 2);
+INSERT INTO tb_report (date, time, text, user_id) VALUES ('2022-08-04', '21:22', 'Novo hóspede para o 403', 2);
+INSERT INTO tb_report (date, time, text, user_id) VALUES ('2022-08-05', '08:00', 'Piscineiro interditou a piscina atá amanhã', 3);
+INSERT INTO tb_report (date, time, text, user_id) VALUES ('2022-08-05', '16:25', 'Cistena e gerador verificados e tudo ok.', 3);
+INSERT INTO tb_report (date, time, text, user_id) VALUES ('2022-08-05', '20:42', 'Moradores informaram a troca de carro para HB20 Prata', 4);
+INSERT INTO tb_report (date, time, text, user_id) VALUES ('2022-08-05', '23:22', 'Moradores utilizaram da churrasqueira e não limparam', 4);

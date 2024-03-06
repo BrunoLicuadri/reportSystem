@@ -1,6 +1,6 @@
 package com.godknows.reports.dtos;
 
-import java.time.Instant;
+import java.time.LocalDate;
 
 import com.godknows.reports.entities.ReportDaily;
 
@@ -8,7 +8,8 @@ public class ReportDailyDTO {
 
 	private Long id;
 	private String text;
-	private Instant moment;
+	private LocalDate date;
+	private String time;
 	
 	private UserDTO user;
 	
@@ -17,17 +18,19 @@ public class ReportDailyDTO {
 	}
 
 
-	public ReportDailyDTO(Long id, String text, Instant moment, UserDTO user) {
+	public ReportDailyDTO(Long id, String text, LocalDate date, String time, UserDTO user) {
 		this.id = id;
 		this.text = text;
-		this.moment = moment;
+		this.date = date;
+		this.time=time;
 		this.user = user;
 	}
 	
 	public ReportDailyDTO(ReportDaily entity) {
 		id = entity.getId();
 		text = entity.getText();
-		moment = entity.getMoment();
+		date = entity.getDate();
+		time = entity.getTime();
 		user = new UserDTO(entity.getUser());
 	}
 
@@ -42,8 +45,13 @@ public class ReportDailyDTO {
 	}
 
 
-	public Instant getMoment() {
-		return moment;
+	public LocalDate getDate() {
+		return date;
+	}
+	
+	
+	public String getTime() {
+		return time;
 	}
 
 

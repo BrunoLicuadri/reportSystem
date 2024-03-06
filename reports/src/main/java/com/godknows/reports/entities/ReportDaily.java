@@ -1,6 +1,6 @@
 package com.godknows.reports.entities;
 
-import java.time.Instant;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,8 +20,8 @@ public class ReportDaily {
 	private Long id;
 	@Column(columnDefinition="TEXT")
 	private String text;
-	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
-	private Instant moment;
+	private LocalDate date;
+	private String time;
 	
 	@ManyToOne
 	@JoinColumn(name="user_id")
@@ -32,10 +32,11 @@ public class ReportDaily {
 	}
 
 
-	public ReportDaily(Long id, String text, Instant moment, User user) {
+	public ReportDaily(Long id, String text, LocalDate date,String time, User user) {
 		this.id = id;
 		this.text = text;
-		this.moment = moment;
+		this.date = date;
+		this.time = time;
 		this.user = user;
 	}
 
@@ -61,13 +62,23 @@ public class ReportDaily {
 	}
 
 
-	public Instant getMoment() {
-		return moment;
+	public LocalDate getDate() {
+		return date;
 	}
 
 
-	public void setMoment(Instant moment) {
-		this.moment = moment;
+	public void setDate(LocalDate date) {
+		this.date = date;
+	}
+	
+
+	public String getTime() {
+		return time;
+	}
+
+
+	public void setTime(String time) {
+		this.time = time;
 	}
 
 

@@ -1,6 +1,6 @@
 package com.godknows.reports.repositories;
 
-import java.time.Instant;
+import java.time.LocalDate;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -19,8 +19,8 @@ public interface ReportDailyRepository extends JpaRepository<ReportDaily, Long>{
 	
 	@Query("SELECT obj "
 			+ "FROM ReportDaily obj "
-			+ "WHERE UPPER(obj.moment) LIKE UPPER(CONCAT(:date, '%'))")
-	public Page<ReportDaily> searchByDate(Instant date, Pageable pageable);
+			+ "WHERE UPPER(obj.date) LIKE UPPER(CONCAT(:date, '%'))")
+	public Page<ReportDaily> searchByDate(LocalDate date, Pageable pageable);
 	
 	
 	

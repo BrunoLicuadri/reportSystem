@@ -1,7 +1,7 @@
 package com.godknows.reports.controllers;
 
 import java.net.URI;
-import java.time.Instant;
+import java.time.LocalDate;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -23,10 +23,13 @@ import com.godknows.reports.services.ReportDailyService;
 @RestController
 @RequestMapping(value="/report")
 public class ReportDailyController {
-
+	
 	
 	@Autowired
 	private ReportDailyService service;
+	
+	
+	
 	
 	@GetMapping
 	public ResponseEntity<Page<ReportDailyDTO>> findAll(@RequestParam(name="user", defaultValue="")String user, Pageable pageable){
@@ -34,14 +37,18 @@ public class ReportDailyController {
 	}	
 	
 	
-	@GetMapping(value="/{date}")
-	public ResponseEntity<Page<ReportDailyDTO>> findByDate(@PathVariable String date, Pageable pageable) {
+	
+	
+	@GetMapping(value="/{localDate}")
+	public ResponseEntity<Page<ReportDailyDTO>> findByDate(@PathVariable String localDate, Pageable pageable) {
 		
-		Instant localDate = Instant.parse(date); 
+		LocalDate date = LocalDate.parse(localDate);
 		
-		Page<ReportDailyDTO> dto = service.serviceFindByDate(localDate, pageable);
+		Page<ReportDailyDTO> dto = service.serviceFindByDate(date, pageable);
 		return ResponseEntity.ok(dto);
 	}
+	
+	
 	
 	@PostMapping
 	public ResponseEntity<ReportDailyDTO> insert (@RequestBody ReportDailyDTO dto){
@@ -49,6 +56,8 @@ public class ReportDailyController {
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{date}").buildAndExpand(dto.getId()).toUri();
 		return ResponseEntity.created(uri).body(dto);
 	}
+	
+	
 	
 	@PutMapping(value="/{id}")
 	public ResponseEntity<ReportDailyDTO> update (@PathVariable Long id, @RequestBody ReportDailyDTO dto){
