@@ -6,14 +6,17 @@ import java.time.format.DateTimeFormatter;
 import javax.persistence.EntityNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.godknows.reports.dtos.ReportDailyDTO;
 import com.godknows.reports.entities.ReportDaily;
 import com.godknows.reports.entities.User;
+import com.godknows.reports.exceptions.DataBaseException;
 import com.godknows.reports.exceptions.ResourceNotFoundException;
 import com.godknows.reports.repositories.ReportDailyRepository;
 import com.godknows.reports.repositories.UserRepository;
@@ -29,6 +32,12 @@ public class ReportDailyService {
 	@Autowired
 	private UserRepository userRepository;
 	
+	
+	@Transactional(readOnly=true)
+	public ReportDailyDTO findById(Long id) {
+		ReportDaily report = repository.findById(id).orElseThrow(()-> new ResourceNotFoundException("Recurso não encontrado."));
+		return new ReportDailyDTO(report);
+	}
 	
 	
 	
@@ -79,12 +88,24 @@ public class ReportDailyService {
 		}
 		
 	}
+	
+	@Transactional(propagation = Propagation.SUPPORTS)
+	public void delete(Long id) {
+		if ( !repository.existsById(id)) {
+			throw new ResourceNotFoundException("Relatório não encontrado ou inexistente.");
+			}
+		try {
+			repository.deleteById(id);
+			}
+		catch(DataIntegrityViolationException e) {
+			throw new DataBaseException("Falha de integridade referencial. Relatório em uso.");
+		}
+	}
 
 	
 	
 	@Transactional(readOnly=true)
 	private void copyDtoToEntity (ReportDailyDTO dto, ReportDaily entity) {
-		//entity.setId(dto.getId());
 		entity.setDate(dto.getDate());
 		entity.setTime(dto.getTime());
 		entity.setText(dto.getText());
