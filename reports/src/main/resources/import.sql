@@ -6,6 +6,17 @@ INSERT INTO tb_user (name, email, phone, password, birth_date) VALUES ('Sindico'
 INSERT INTO tb_user (name, email, phone, password, birth_date) VALUES ('SubSindico', 'subsindico1@gmail.com', '977777777', '123456', '1988-12-18');
 INSERT INTO tb_user (name, email, phone, password, birth_date) VALUES ('Administradora', 'administradora@gmail.com', '977777777', '123456', '1960-06-16');
 
+INSERT INTO tb_role (authority) VALUES ('ROLE_ADMIN')
+INSERT INTO tb_role (authority) VALUES ('ROLE_USER')
+INSERT INTO tb_role (authority) VALUES ('ROLE_VISITOR')
+
+INSERT INTO tb_user_role (user_id, role_id) VALUES (1, 2)
+INSERT INTO tb_user_role (user_id, role_id) VALUES (2, 2)
+INSERT INTO tb_user_role (user_id, role_id) VALUES (3, 2)
+INSERT INTO tb_user_role (user_id, role_id) VALUES (4, 2)
+INSERT INTO tb_user_role (user_id, role_id) VALUES (5, 1)
+INSERT INTO tb_user_role (user_id, role_id) VALUES (6, 1)
+INSERT INTO tb_user_role (user_id, role_id) VALUES (7, 3)
 
 INSERT INTO tb_report (date, time, text, user_id) VALUES ('2022-07-25', '05:00', 'Queda de energia das 05:00 as 06:22', 1);
 INSERT INTO tb_report (date, time, text, user_id) VALUES ('2022-07-29', '15:15', 'Morador 1818 retirou sua encomenda', 2);
