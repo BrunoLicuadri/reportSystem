@@ -27,7 +27,7 @@ public class UserDTO {
 	
 	public UserDTO(User entity) {
 		id = entity.getId();
-		name = entity.getname();
+		name = entity.getName();
 		email = entity.getEmail();
 		phone = entity.getPhone();
 		birthDate = entity.getBirthDate();
