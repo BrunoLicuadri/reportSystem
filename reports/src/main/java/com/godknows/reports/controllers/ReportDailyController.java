@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,7 +30,7 @@ public class ReportDailyController {
 	@Autowired
 	private ReportDailyService service;
 	
-	
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER','ROLE_VISITOR')")
 	@GetMapping(value="/id/{id}")
 	public ResponseEntity<ReportDailyDTO> findById (@PathVariable Long id){
 		ReportDailyDTO reportDto = service.findById(id);
@@ -37,13 +38,14 @@ public class ReportDailyController {
 	}
 	
 	
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER','ROLE_VISITOR')")
 	@GetMapping
 	public ResponseEntity<Page<ReportDailyDTO>> findAll(@RequestParam(name="user", defaultValue="")String user, Pageable pageable){
 		return ResponseEntity.ok(service.findAll(user, pageable));
 	}	
 	
 	
-	
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER','ROLE_VISITOR')")
 	@GetMapping(value="/{localDate}")
 	public ResponseEntity<Page<ReportDailyDTO>> findByDate(@PathVariable String localDate, Pageable pageable) {
 		
@@ -54,7 +56,7 @@ public class ReportDailyController {
 	}
 	
 	
-	
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
 	@PostMapping
 	public ResponseEntity<ReportDailyDTO> insert (@RequestBody ReportDailyDTO dto){
 		dto = service.insert(dto);
@@ -63,7 +65,7 @@ public class ReportDailyController {
 	}
 	
 	
-	
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
 	@PutMapping(value="/{id}")
 	public ResponseEntity<ReportDailyDTO> update (@PathVariable Long id, @RequestBody ReportDailyDTO dto){
 		dto = service.update(id, dto);
@@ -71,7 +73,7 @@ public class ReportDailyController {
 	}
 	
 	
-	
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN')")
 	@DeleteMapping(value="/{id}")
 	public ResponseEntity<Void> delete(@PathVariable Long id) {
 		service.delete(id);

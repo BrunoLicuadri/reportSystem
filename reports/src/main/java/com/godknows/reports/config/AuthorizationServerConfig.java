@@ -15,8 +15,8 @@ import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 
 @Configuration
 @EnableAuthorizationServer
-public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
-
+public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter{
+	
 	@Value("${security.oauth2.client.client-id}")
 	private String clientId;
 	
@@ -25,6 +25,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 	
 	@Value("${jwt.duration}")
 	private Integer jwtDuration;
+	
 	
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
@@ -37,18 +38,14 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 	
 	@Autowired
 	private AuthenticationManager authenticationManager;
-
-	
 	
 	@Override
-	public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
+	public void configure(AuthorizationServerSecurityConfigurer security) throws Exception{
 		security.tokenKeyAccess("permitAll()").checkTokenAccess("isAuthenticated()");
 	}
-
-	
 	
 	@Override
-	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
+	public void configure(ClientDetailsServiceConfigurer clients) throws Exception{
 		clients.inMemory()
 		.withClient(clientId)
 		.secret(passwordEncoder.encode(clientSecret))
@@ -56,16 +53,14 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 		.authorizedGrantTypes("password")
 		.accessTokenValiditySeconds(jwtDuration);
 	}
-
 	
 	
 	@Override
-	public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
-
+	public void configure (AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
 		endpoints.authenticationManager(authenticationManager)
 		.tokenStore(tokenStore)
 		.accessTokenConverter(accessTokenConverter);
 	}
 	
-	
+
 }

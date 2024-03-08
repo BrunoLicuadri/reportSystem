@@ -23,12 +23,11 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 
+@SuppressWarnings("serial")
 @Entity
 @Table(name="tb_user")
 public class User implements UserDetails{
 
-
-	private static final long serialVersionUID = 1L;
 	
 	
 	@Id
@@ -56,6 +55,7 @@ public class User implements UserDetails{
 
 
 	public User(Long id, String name, String email, String phone, LocalDate birthDate, String password) {
+		super();
 		this.id = id;
 		this.name = name;
 		this.email = email;
@@ -134,6 +134,10 @@ public class User implements UserDetails{
 		return roles;
 	}
 
+	
+	public void addRole(Role role) {
+    	roles.add(role);
+    }
 	
 
 	public boolean hasRole(String roleName) {
