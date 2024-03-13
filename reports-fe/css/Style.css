@@ -7,7 +7,7 @@
     --color-white: #fff;
     --bg-btn-collor: #ff8400;
     --bg-rpt-list-color: #333;
-
+    --error-msg: #f00;
 
 }
    
@@ -26,6 +26,10 @@ header {
 nav {
     height: 120px;
     background-color: var(--lihgt-grey);
+}
+
+label {
+    display: none;
 }
    
 /* NAV´s CLASSES & IDs */
@@ -67,7 +71,7 @@ nav {
 nav input{
     width: 100px;
     height: 20px;
-    margin: 5px;
+    margin: 0 5px;
     border-radius: 5px;
     border: 0px;
     outline: none;
@@ -95,6 +99,12 @@ nav input::placeholder{
     font-weight: 400;
     font-size: 10px;
     cursor: pointer;
+}
+
+.error-message {
+    font-size: 8px;
+    color: var(--error-msg);
+    margin-left: 10px;
 }
 
 
@@ -170,6 +180,11 @@ nav input::placeholder{
     .btnClassSend {
         width: 120px;
         font-size: 12px;
+    }
+
+    .error-message {
+        font-size: 12px;
+        margin-left: 10px;
     }
 }
 

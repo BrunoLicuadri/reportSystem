@@ -23,9 +23,32 @@
             <div class="login-container">
                 <h2 class="loginTextClass">Login</h2>
                 <div class="loginInputClass">
-                    <input name="inputName" class="inputClassName" type="text" placeholder="Nome">
-                    <input name="inputemail" class="inputClassEmail" type="text" placeholder="Email">
-                    <button name="btnSend" class="btnClassSend" type="submit">Enviar</button>
+                    <div>
+                        <label for="inputName">Nome</label>
+                        <input 
+                            name="inputName" 
+                            id="inputName"
+                            class="inputClassName" 
+                            type="text" 
+                            placeholder="Nome"
+                        />
+                        <div class="error-message" data-error="name"></div>
+                    </div>
+                    <div>
+                        <label for="inputpassword">Senha</label>
+                        <input 
+                            name="inputpassword"
+                            id="inputpassword" 
+                            class="inputClassPassword" 
+                            type="password" 
+                            placeholder="Senha"
+                        />
+                        <div class="error-message" data-error="password"></div>
+                    </div>
+                    <div>
+                        <button name="btnSend" id="btnSend" class="btnClassSend" type="submit">Enviar</button>
+                    </div>
+                    
                 </div>
 
             </div>
@@ -149,6 +172,7 @@
     <footer>
         <div>Footer</div>
     </footer>
+    <script type="module" src="js/reports.js"></script>
 </body>
 
 </html>
