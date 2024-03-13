@@ -1,0 +1,216 @@
+/* ELEMENTS */
+
+:root{
+    --secondary-color: #6d2f6d;
+    --dark-gray: #666;
+    --lihgt-grey: #9fbdbe;
+    --color-white: #fff;
+    --bg-btn-collor: #ff8400;
+    --bg-rpt-list-color: #333;
+
+
+}
+   
+   
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins";
+}
+   
+header {
+    background-color: var(--dark-gray);
+}
+
+nav {
+    height: 120px;
+    background-color: var(--lihgt-grey);
+}
+   
+/* NAV´s CLASSES & IDs */
+
+.container {
+    width: 100%;
+    max-width: 960px;
+    padding: 10px;
+    margin: 0 auto;
+}
+
+.nav-items {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.login-container {
+    display: flex;
+    align-items: center;
+    padding: 0 5px;
+}
+
+.condoTextClass{
+    font-size: 20px;
+    padding: 0 5px;
+}
+
+.loginTextClass{
+  font-size: 20px;
+}
+
+.loginInputClass {
+    display: flex;
+    flex-direction: column;
+}
+
+nav input{
+    width: 100px;
+    height: 20px;
+    margin: 5px;
+    border-radius: 5px;
+    border: 0px;
+    outline: none;
+    padding: 0 10px;
+}
+
+
+nav input::placeholder{
+    font-size: 10px;
+}
+
+.loginTextClass {
+    margin: 0 5px;
+    font-size: 20px;
+}
+
+.btnClassSend {
+    width: 100px;
+    height: 20px;
+    margin: 5px;
+    border-radius: 5px;
+    border: 0px;
+    background-color: var(--bg-btn-collor);
+    color: var(--color-white);
+    font-weight: 400;
+    font-size: 10px;
+    cursor: pointer;
+}
+
+
+/* REPORTS´S CLASSES & IDs */
+
+
+.report-card-item {
+    background-color: var(--lihgt-grey);
+    color: var(--secondary-color);
+    margin-bottom: 10px;
+    border-radius:  5px;
+    padding: 20px;
+    font-size: 10px;
+    cursor: pointer;
+}
+
+.complain-card-item {
+    background-color: var(--secondary-color);
+    color: var(--color-white);
+    margin-bottom: 10px;
+    border-radius:  5px;
+    padding: 20px;
+    font-size: 10px;
+    cursor: pointer;
+}
+
+#report-section h2 {
+    font-size: 20px;
+    padding: 0 5px;
+}
+
+
+.dflex {
+    display: flex;
+    margin-bottom: 5px;
+}
+
+.date {
+    margin-right: 5px;
+}
+
+.comp-owner {
+    direction: rtl;
+}
+
+/* BOOTSTREP BREAKPOINTS */
+
+@media(min-width:576px) {
+    
+    .condoTextClass{
+        font-size: 25px;
+        padding: 0 10px;
+    }
+
+    .login-container {
+        padding: 0 10px;
+    }
+
+    nav input{
+        width: 120px;
+    }
+    
+    
+    nav input::placeholder{
+        font-size: 12px;
+    }
+    
+    .loginTextClass {
+        margin: 0 10px;
+        font-size: 25px;
+    }
+    
+    .btnClassSend {
+        width: 120px;
+        font-size: 12px;
+    }
+}
+
+
+@media(min-width:768px) {
+
+    .condoTextClass{
+        padding: 0 10px;
+    }
+
+    .loginInputClass {
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+
+    .login-container {
+        flex-direction: column;
+        align-items:flex-start;
+        padding: 0
+    }
+
+
+    nav input{
+        width: 15vw;
+        margin: 0 5px;
+    }
+    
+    
+    nav input::placeholder{
+        font-size: 12px;
+    }
+    
+    .loginTextClass {
+        margin: 0 8px;
+        font-size: 25px;
+    }
+    
+    .btnClassSend {
+        width: 15vw;
+        max-width: 130px;
+        font-size: 12px;
+        margin: 0 5px;
+    }
+}
