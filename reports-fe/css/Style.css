@@ -107,6 +107,10 @@ nav input::placeholder{
     margin-left: 10px;
 }
 
+.errorBorder {
+    border: 2px solid var(--error-msg);
+}
+
 
 /* REPORTS´S CLASSES & IDs */
 
@@ -165,6 +169,7 @@ nav input::placeholder{
 
     nav input{
         width: 120px;
+        max-width: 190px;
     }
     
     
@@ -184,6 +189,7 @@ nav input::placeholder{
 
     .error-message {
         font-size: 12px;
+        color: var(--error-msg);
         margin-left: 10px;
     }
 }

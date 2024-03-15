@@ -22,21 +22,33 @@ export function init(){
     state.errorPassword = document.querySelector('[data-error="password"]');
 
     state.inputName.addEventListener('change', handleInputNameChange);
+    state.inputPassword.addEventListener('change', handleInputPasswordChange);
+
+    state.btnSave.addEventListener('click', handleBtnSendClick);
 }
+
+
+
 
 function setLoginError(key, value){
     const element = document.querySelector(`[data-error="${key}"]`);
     element.innerHTML = value;
 }
 
+
 function handleInputNameChange(event){
-    if (event.target.value == ""){
+    if (window.matchMedia("(min-width:768px)").matches && isEmpty(event.target.value)) {
         setLoginError("name", "Campo Obrigatório");
     }
-    else {
+    else if (window.matchMedia("(max-width:768px)").matches && isEmpty(event.target.value)){
+        inputName.classList.add("errorBorder");    
+    }
+    else{
+        inputName.classList.remove("errorBorder");
         setLoginError("name", "");
     }
 }
+
 
 function handleInputPasswordChange(event){
     if (event.target.value == ""){
@@ -45,4 +57,14 @@ function handleInputPasswordChange(event){
     else {
         setLoginError("password", "");
     }
+}
+
+function handleBtnSendClick(){
+    state.inputName.value = "";
+    state.inputPassword.value = "";
+}
+
+
+function isEmpty(element){
+    return (element === undefined || element == null || element == "" || element == " ");
 }
