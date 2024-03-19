@@ -39,8 +39,9 @@ function setLoginError(key, value){
 function handleInputNameChange(event){
     if (window.matchMedia("(min-width:768px)").matches && isEmpty(event.target.value)) {
         setLoginError("name", "Campo Obrigatório");
+        inputName.classList.add("errorBorder");
     }
-    else if (window.matchMedia("(max-width:768px)").matches && isEmpty(event.target.value)){
+    else if (window.matchMedia("(max-width:767px)").matches && isEmpty(event.target.value)){
         inputName.classList.add("errorBorder");    
     }
     else{

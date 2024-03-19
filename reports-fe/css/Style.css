@@ -1,6 +1,7 @@
 /* ELEMENTS */
 
 :root{
+    --primary-font-color: #d9d9d9;
     --secondary-color: #6d2f6d;
     --dark-gray: #666;
     --lihgt-grey: #9fbdbe;
@@ -19,6 +20,11 @@
     padding: 0;
     font-family: "Poppins";
 }
+
+a, a:hover {
+    text-decoration: none;
+    color: unset;
+}
    
 header {
     background-color: var(--dark-gray);
@@ -32,6 +38,9 @@ nav {
 label {
     display: none;
 }
+
+
+
    
 /* NAV´s CLASSES & IDs */
 
@@ -56,17 +65,22 @@ label {
 }
 
 .condoTextClass{
-    font-size: 20px;
+    font-size: 15px;
     padding: 0 5px;
 }
 
 .loginTextClass{
-  font-size: 20px;
+    margin: 0 5px;
+    font-size: 15px;
 }
 
 .loginInputClass {
     display: flex;
     flex-direction: column;
+}
+
+.inputClassName {
+    font-size: 10px;
 }
 
 nav input{
@@ -77,17 +91,15 @@ nav input{
     border: 0px;
     outline: none;
     padding: 0 10px;
+    color: var(--dark-gray);
 }
 
 
 nav input::placeholder{
     font-size: 10px;
+    color: var(--primary-font-color);
 }
 
-.loginTextClass {
-    margin: 0 5px;
-    font-size: 20px;
-}
 
 .btnClassSend {
     width: 100px;
@@ -108,9 +120,31 @@ nav input::placeholder{
     margin-left: 10px;
 }
 
+
 .errorBorder {
-    border: 2px solid var(--error-msg);
+    border: 1px solid var(--error-msg);
 }
+
+
+/* HEADER - CADASTRO COMPONENT*/
+
+
+.logged-user-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 0 5px;
+    font-size: 15px;
+}
+
+.logged-user-container p{
+    color: var(--secondary-color);
+}
+
+.logged-user-container a{
+    font-weight: 700;
+}
+
 
 
 /* REPORTS´S CLASSES & IDs */
@@ -233,6 +267,10 @@ nav input::placeholder{
         margin: 0 10px;
         font-size: 25px;
     }
+
+    .inputClassName {
+        font-size: 15px;
+    }
     
     .btnClassSend {
         width: 120px;
@@ -248,6 +286,13 @@ nav input::placeholder{
     .deliveries-card-details label {
         display: flex;
     }
+
+    /* HEADER CADASTRO COMPONENT*/
+
+    .logged-user-container {
+        font-size: 25px;
+    }
+
 }
 
 

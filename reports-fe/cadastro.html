@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/cadastro.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;0,900&display=swap"
+        rel="stylesheet">
+
+    <title>Relatórios</title>
+</head>
+
+<body>
+    <header>
+        <nav class="container nav-items">
+            <div>
+                <h1 class="condoTextClass">Condomínio Yukai</h1>
+            </div>
+            <div class="logged-user-container">
+                <p>Porteiro1 Junior</p>
+                <a href="#">Sair</a>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section id="register-section" >
+            <form class="register-container">
+
+                <h2>Dados do Usuário</h2>
+
+                <label for="regi-inputName">Nome</label>
+                <input name="regi-inputName" id="regi-inputName" class="register-form" type="text" placeholder="Nome" />
+                <div class="error-message" data-error="name"></div>
+
+                <label for="regi-email">Email</label>
+                <input name="regi-email" id="regi-email" class="register-form" type="text" placeholder="Email" />
+                <div class="error-message" data-error="email"></div>
+
+                <label for="regi-phone">Email</label>
+                <input name="regi-phone" id="regi-phone" class="register-form" type="text" placeholder="Celular" />
+                <div class="error-message" data-error="phone"></div>
+
+                <label for="regi-password">Email</label>
+                <input name="regi-password" id="regi-password" class="register-form" type="password"
+                    placeholder="Senha" />
+                <div class="error-message" data-error="password"></div>
+
+                <label for="regi-birthDate">Data Nascimento</label>
+                <input name="regi-birthDate" id="regi-birthDate" class="register-form" type="text"
+                    placeholder="Nascimento" />
+                <div class="error-message" data-error="birthDate"></div>
+
+                <label for="regi-birthDate">Data Nascimento</label>
+                <select class="register-form gkc-select" name="regi-role" id="regi-role" required>
+                    <option value="" disabled selected>Perfil</option>
+                    <option value="1">Admin</option>
+                    <option value="2">User</option>
+                    <option value="3">Visitor</option>
+                </select>
+            </form>
+
+            <div class="register-container">
+                <button type="reset" class="btn btn-white">Cancelar</button>
+                <button type="submit" class="btn btn-blue">Salvar</button>
+            </div>
+
+        </section>
+    </main>
+    <footer>
+        <div>Footer</div>
+    </footer>
+    <script type="module" src="js/reports.js"></script>
+</body>
+
+</html>

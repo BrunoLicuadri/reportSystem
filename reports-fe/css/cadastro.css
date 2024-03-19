@@ -1,0 +1,98 @@
+@import url(Style.css);
+
+/* ELEMENTS */
+
+.register-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 570px;
+    margin: 0 auto;
+    padding: 20px;
+    align-items: center;
+}
+
+.register-container h2{
+    font-size: 15px;
+    color: var(--bg-btn-collor);
+}
+
+.register-form{
+    width: 100%;
+    height: 40px;
+    font-size: 12px;
+    padding: 0 20px;
+    color: var(--lihgt-grey);
+    border-radius: 5px;
+    border: 1px solid var(--bg-btn-collor);
+    margin: 10px;
+}
+
+.register-form:focus{
+    outline: none;
+}
+
+.register-form::placeholder{
+    color: var(--lihgt-grey);
+}
+
+.gkc-select:invalid{
+    color: var(--lihgt-grey);
+}
+
+.gkc-select option[disabled]{
+    display: none;
+}
+
+.gkc-select option{
+    color: var(--lihgt-gray);
+}
+
+.btn {
+    border-radius: 5px;
+    width: 100%;
+    height: 42px;
+    font-size: 12px;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: none;
+}
+
+.btn-blue{
+    background-color: #3483fa;
+    color: #fff;
+}
+
+.btn-white{
+    background-color: #fff;
+    color: #3483fa;
+    border: 2px solid #3483fa;
+    margin-bottom: 15px;
+}
+
+/* BOOTSTREP BREAKPOINTS */
+
+@media(min-width:576px) {
+    .register-container h2{
+        font-size: 25px;
+    }
+
+    .register-form{
+        font-size: 15px;
+    }
+
+    .btn {
+        font-size: 15px;
+    }
+
+}
+
+
+@media(min-width:768px) {
+
+    
+
+}

@@ -1,15 +1,16 @@
 package com.godknows.reports.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.godknows.reports.dtos.UserDTO;
+import com.godknows.reports.dtos.UserPasswordDTO;
 import com.godknows.reports.entities.Role;
 import com.godknows.reports.entities.User;
 import com.godknows.reports.repositories.UserRepository;
@@ -19,6 +20,9 @@ public class UserService implements UserDetailsService {
 
 	@Autowired
 	public UserRepository repository;
+	
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
 
 
 	@Override
@@ -48,28 +52,25 @@ public class UserService implements UserDetailsService {
 	}
 	
 	@Transactional
-	public UserDTO insertUser (UserDTO dto, Role role) {
+	public UserPasswordDTO insertUser (UserPasswordDTO dto) {
 		User entity = new User();
 		copyDtoToEntity(dto, entity);
 		entity = repository.save(entity);
-		entity.setPassword("123456");
-		entity.addRole(role);
-		return new UserDTO(entity);
+		return new UserPasswordDTO(entity);
 	}
 	
 	
-	private void copyDtoToEntity (UserDTO dto, User entity) {
+	private void copyDtoToEntity (UserPasswordDTO dto, User entity) {
 		entity.setName(dto.getName());
 		entity.setBirthDate(dto.getBirthDate());
 		entity.setEmail(dto.getEmail());
 		entity.setPhone(dto.getPhone());
+		entity.setPassword(passwordEncoder.encode(dto.getPassword()));
 
-		for(String authority : dto.g) {
+		for(String authority : dto.getRoles()) {
 			Role role = new Role();
-			role.setId(authority.getAuthority());
+			role.setAuthority(authority);
 			entity.getRoles().add(role);
 		}
-		
-		
 	}
 }
