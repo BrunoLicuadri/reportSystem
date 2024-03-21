@@ -1,6 +1,10 @@
 @import url(Style.css);
 
-/* ELEMENTS */
+/* CLASSES N IDs */
+
+.logged-user-container {
+    font-size: 15px;
+}
 
 .register-container {
     display: flex;
@@ -76,6 +80,11 @@
 /* BOOTSTREP BREAKPOINTS */
 
 @media(min-width:576px) {
+
+    .logged-user-container {
+        font-size: 20px;
+    }
+
     .register-container h2{
         font-size: 25px;
     }

@@ -10,6 +10,7 @@
     --bg-rpt-list-color: #333;
     --error-msg: #f00;
     --bg-delivery-card: rgb(134, 216, 134);
+    --bg-footer-back: #000;
 
 }
    
@@ -39,10 +40,13 @@ label {
     display: none;
 }
 
+footer{
+    background-color: var(--dark-gray);
+}
 
 
    
-/* NAV´s CLASSES & IDs */
+/* HEADER NAV´s CLASSES & IDs */
 
 .container {
     width: 100%;
@@ -101,6 +105,8 @@ nav input::placeholder{
 }
 
 
+
+
 .btnClassSend {
     width: 100px;
     height: 20px;
@@ -126,7 +132,7 @@ nav input::placeholder{
 }
 
 
-/* HEADER - CADASTRO COMPONENT*/
+/* HEADER NAV´s - CADASTRO COMPONENT*/
 
 
 .logged-user-container {
@@ -147,6 +153,19 @@ nav input::placeholder{
 
 
 
+/* GENERAL CLASSES & IDs */
+
+.dflex {
+    display: flex;
+    margin-bottom: 5px;
+}
+
+.date {
+    margin-right: 5px;
+}
+
+
+
 /* REPORTS´S CLASSES & IDs */
 
 
@@ -160,6 +179,20 @@ nav input::placeholder{
     cursor: pointer;
 }
 
+#report-section h2 {
+    font-size: 20px;
+    padding: 0 5px;
+}
+
+.rep-owner {
+    direction: rtl;
+}
+
+
+
+
+/* COMPLAIN´s  CLASSES & IDs */
+
 .complain-card-item {
     background-color: var(--secondary-color);
     color: var(--color-white);
@@ -170,20 +203,7 @@ nav input::placeholder{
     cursor: pointer;
 }
 
-#report-section h2 {
-    font-size: 20px;
-    padding: 0 5px;
-}
 
-
-.dflex {
-    display: flex;
-    margin-bottom: 5px;
-}
-
-.date {
-    margin-right: 5px;
-}
 
 .comp-owner {
     direction: rtl;
@@ -240,6 +260,67 @@ nav input::placeholder{
 
 
 
+
+
+/* FOOTER CLASSES & IDs */
+
+.footer-container{
+    width: 100%;
+    max-width: 960px;
+    padding: 10px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--lihgt-grey);
+    padding: 20px;
+}
+
+.footer-items {
+    margin: 10px;
+}
+
+.decisao-img{
+    width: 100%;
+    max-height: 120px;
+    max-width: 120px;
+}
+
+.cdm-img{
+    width: 100%;
+    max-height: 180px;
+    max-width: 180px;
+}
+
+.lamarck-img{
+    width: 100%;
+    max-height: 120px;
+    max-width: 120px;
+}
+
+
+.cdm-iframe {
+    width: 100%;
+    max-height: 220px;
+    max-width: 220px;
+}
+
+
+.footer-items {
+    align-items: center;
+    justify-content: center;
+}
+
+
+.condo-address {
+    font-size: 12px;
+    color: var(--bg-footer-back);
+    text-align: center;
+}
+
+
+
+
 /* BOOTSTREP BREAKPOINTS */
 
 @media(min-width:576px) {
@@ -268,9 +349,6 @@ nav input::placeholder{
         font-size: 25px;
     }
 
-    .inputClassName {
-        font-size: 15px;
-    }
     
     .btnClassSend {
         width: 120px;
@@ -287,13 +365,35 @@ nav input::placeholder{
         display: flex;
     }
 
+
     /* HEADER CADASTRO COMPONENT*/
 
     .logged-user-container {
         font-size: 25px;
     }
 
+
+    /* FOOTER */
+    .footer-container {
+        flex-direction: row;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+    }
+
+    .footer-left-items {
+        height: 180px;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .condo-address {
+        font-size: 16px;
+    }
+
 }
+
+
+
 
 
 @media(min-width:768px) {
@@ -305,6 +405,7 @@ nav input::placeholder{
     .loginInputClass {
         flex-direction: row;
         justify-content: space-evenly;
+        align-items: center;
     }
 
     .login-container {
@@ -313,7 +414,7 @@ nav input::placeholder{
         padding: 0
     }
 
-
+  
     nav input{
         width: 15vw;
         margin: 0 5px;
