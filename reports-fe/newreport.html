@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/report.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!--Google Font Link for Icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+    <title>Novo Relatórios</title>
+</head>
+
+<body>
+    <header>
+        <nav class="container nav-items">
+            <div>
+                <h1 class="condoTextClass">Condomínio Yukai</h1>
+            </div>
+            <div class="logged-user-container">
+                <p>Porteiro1 Junior</p>
+                <a href="#">Sair</a>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section class="calendar-section">
+            <div class="wrapper">
+                <div class="fake-header">
+                    <p class="current-date"></p>
+                    <div class="icons">
+                        <span id="prev" class="material-symbols-rounded">chevron_left</span>
+                        <span id="next" class="material-symbols-rounded">chevron_right</span>
+                    </div>
+                </div>
+                <div class="calendar">
+                    <ul class="weeks">
+                        <li>Dom</li>
+                        <li>Seg</li>
+                        <li>Ter</li>
+                        <li>Qua</li>
+                        <li>Qui</li>
+                        <li>Sex</li>
+                        <li>Sáb</li>
+                    </ul>
+                    <ul class="days">
+                        
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="rpt-section" >
+            <form class="report-container">
+                <h2 class="report-section-title">Ocorrência</h2>
+
+                <div class="error-message" data-error="name"></div>
+
+                <textarea class="register-form gkc-textarea" placeholder="Descrição"></textarea>
+            </form>
+
+            <div class="report-container">
+                <button type="reset" class="btn btn-white">Cancelar</button>
+                <button type="submit" class="btn btn-blue">Salvar</button>
+            </div>
+
+        </section>
+    </main>
+    <footer>
+
+        <div class="footer-container">
+
+            <div class="footer-left-items dflex">
+                <div class="footer-items">
+                    <a href="https://decisaoengenharia-al.com.br/site/" target="_blank" rel="noopener noreferrer">
+                        <img class="decisao-img" src="/imgs/decisaoengenharia.jpeg" alt="decisaoengenharia.png">
+                    </a>
+                </div>
+    
+                <div class="footer-items">
+                    <a class="lamarck-img-link" href="http://lamarckadm.com.br/" target="_blank" rel="noopener noreferrer">
+                        <img class="lamarck-img" src="/imgs/Lamarck.jpg" alt="lamarck.png">
+                    </a>
+                </div>
+            </div>
+           
+
+            <div class="footer-items">
+                <a href="https://decisaoengenharia-al.com.br/site/corais-do-mar/" target="_blank" rel="noopener noreferrer">
+                    <img class="cdm-img" src="/imgs/Corais do Mar.jpg" alt="CoraisDoMar.jpg">
+                </a>
+            </div>
+
+            <div class="footer-items">
+                <iframe class="cdm-iframe" src="https://www.youtube.com/embed/iR0fJzcfr5g?mute=1" title="CORAIS DO MAR"
+                frameborder="0" allow="accelerometer; 
+                        autoplay; 
+                        clipboard-write; 
+                        encrypted-media; 
+                        gyroscope; 
+                        picture-in-picture; 
+                        web-share" allowfullscreen>
+            </iframe>
+            </div>
+
+            <div class="condo-address">
+                <p>Av. Empresário Carlos da Silva Nogueira, 410 - Jatiúca, Maceió - AL, 57036-540</p>
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <script type="module" src="js/reports.js"></script>
+</body>
+
+</html>
