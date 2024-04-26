@@ -22,6 +22,7 @@ public class Complaint {
 	private String time;
 	@Column(columnDefinition = "TEXT")
 	private String text;
+	private String status;
 	
 	@ManyToOne
     @JoinColumn(name="user_id")
@@ -33,11 +34,12 @@ public class Complaint {
 	}
 
 
-	public Complaint(Long id, LocalDate date, String time, String text, User resident) {
+	public Complaint(Long id, LocalDate date, String time, String text, String status, User resident) {
 		this.id = id;
 		this.date = date;
 		this.time = time;
 		this.text = text;
+		this.status = status;
 		this.resident = resident;
 	}
 
@@ -81,6 +83,16 @@ public class Complaint {
 
 	public void setText(String text) {
 		this.text = text;
+	}
+	
+
+	public String getStatus() {
+		return status;
+	}
+
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 

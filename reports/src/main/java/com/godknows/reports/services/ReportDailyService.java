@@ -94,6 +94,7 @@ public class ReportDailyService {
 		
 	}
 	
+	
 	@Transactional(propagation = Propagation.SUPPORTS)
 	public void delete(Long id) {
 		if ( !repository.existsById(id)) {
@@ -109,7 +110,6 @@ public class ReportDailyService {
 
 	
 	
-	@Transactional(readOnly=true)
 	private void copyDtoToEntity (ReportDailyDTO dto, ReportDaily entity) {
 		entity.setDate(dto.getDate());
 		entity.setTime(dto.getTime());

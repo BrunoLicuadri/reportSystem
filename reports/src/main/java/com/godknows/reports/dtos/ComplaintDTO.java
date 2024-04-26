@@ -16,16 +16,19 @@ public class ComplaintDTO {
 	@NotBlank(message="Campo Obrigatório")
     @Size(min=10,max=500, message="Mínimo de 10 e Máximo de 500 caracteres.")
 	private String text;
+	@NotBlank(message="Campo Obrigatório")
+	private String status;
 
 	private UserDTO resident;
 
 
 	
-	public ComplaintDTO(Long id, LocalDate date, String time, String text, UserDTO resident) {
+	public ComplaintDTO(Long id, LocalDate date, String time, String text, String status, UserDTO resident) {
 			this.id = id;
 			this.date = date;
 			this.time = time;
 			this.text = text;
+			this.status = status;
 			this.resident = resident;
 		}
 	
@@ -36,6 +39,7 @@ public class ComplaintDTO {
 		date = entity.getDate();
 		time = entity.getTime();
 		text = entity.getText();
+		status = entity.getStatus();
 		resident = new UserDTO(entity.getUser());
 	}
 
@@ -57,6 +61,12 @@ public class ComplaintDTO {
 	public String getText() {
 		return text;
 	}
+	
+
+	public String getStatus() {
+		return status;
+	}
+
 
 	public UserDTO getResident() {
 		return resident;

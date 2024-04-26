@@ -22,5 +22,4 @@ public interface ReportDailyRepository extends JpaRepository<ReportDaily, Long>{
 			+ "WHERE UPPER(obj.date) LIKE UPPER(CONCAT(:date, '%'))")
 	public Page<ReportDaily> searchByDate(LocalDate date, Pageable pageable);
 
-	
 }
