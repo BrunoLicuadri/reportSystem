@@ -3,6 +3,8 @@ package com.godknows.reports.controllers;
 import java.net.URI;
 import java.time.LocalDate;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -45,6 +47,12 @@ public class ReportDailyController {
 	}	
 	
 	
+	@GetMapping(value="/preview")
+	public ResponseEntity<Page<ReportDailyDTO>> findAllPreview(@RequestParam(name="user", defaultValue="")String user, Pageable pageable){
+		return ResponseEntity.ok(service.previewFindAll(user, pageable));
+	}
+
+	
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER','ROLE_VISITOR')")
 	@GetMapping(value="/{localDate}")
 	public ResponseEntity<Page<ReportDailyDTO>> findByDate(@PathVariable String localDate, Pageable pageable) {
@@ -58,7 +66,7 @@ public class ReportDailyController {
 	
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
 	@PostMapping
-	public ResponseEntity<ReportDailyDTO> insert (@RequestBody ReportDailyDTO dto){
+	public ResponseEntity<ReportDailyDTO> insert (@Valid @RequestBody ReportDailyDTO dto){
 		dto = service.insert(dto);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{date}").buildAndExpand(dto.getId()).toUri();
 		return ResponseEntity.created(uri).body(dto);
@@ -67,7 +75,7 @@ public class ReportDailyController {
 	
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
 	@PutMapping(value="/{id}")
-	public ResponseEntity<ReportDailyDTO> update (@PathVariable Long id, @RequestBody ReportDailyDTO dto){
+	public ResponseEntity<ReportDailyDTO> update (@PathVariable Long id, @Valid @RequestBody ReportDailyDTO dto){
 		dto = service.update(id, dto);
 		return ResponseEntity.ok(dto);
 	}

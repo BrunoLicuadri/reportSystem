@@ -4,8 +4,11 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.security.core.GrantedAuthority;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
+import com.godknows.reports.entities.Role;
 import com.godknows.reports.entities.User;
 
 
@@ -13,13 +16,19 @@ import com.godknows.reports.entities.User;
 public class UserPasswordDTO {
 	
 	private Long id;
+	@NotBlank(message="Campo Obrigatório")
+    @Size(min=3,max=50, message="Mínimo de 3 e Máximo de 50 caracteres.")
 	private String name;
+	@NotBlank(message="Campo Obrigatório")
 	private String email;
+	@NotBlank(message="Campo Obrigatório")
 	private String phone;
 	private LocalDate birthDate;
+	@NotBlank(message="Campo Obrigatório")
 	private String password;
 	
-	private List<String> roles = new ArrayList<>();
+	@NotEmpty(message="Deve ter pelo menos 1 escopo de autoridade")
+	private List<RoleDTO> roles = new ArrayList<>();
 	
 	
 	public UserPasswordDTO(Long id, String name, String email, String phone, LocalDate birthDate, String password) {
@@ -39,8 +48,8 @@ public class UserPasswordDTO {
 		birthDate = entity.getBirthDate();
 		password = entity.getPassword();
 		
-		for(GrantedAuthority role : entity.getAuthorities()) {
-			roles.add(role.getAuthority());
+		for(Role role : entity.getRoles()) {
+			roles.add(new RoleDTO(role));
 		}
 	}
 
@@ -64,7 +73,7 @@ public class UserPasswordDTO {
 		return birthDate;
 	}
 
-	public List<String> getRoles() {
+	public List<RoleDTO> getRoles() {
 		return roles;
 	}
 

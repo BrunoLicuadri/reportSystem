@@ -2,7 +2,11 @@ package com.godknows.reports.controllers;
 
 import java.net.URI;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,6 +30,13 @@ public class UserController {
 	private UserService service;
 	
 	
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER','ROLE_VISITOR')")
+	@GetMapping
+	public ResponseEntity<Page<UserDTO>> findAll(Pageable pageable){
+		return ResponseEntity.ok(service.findAll(pageable));
+	}	
+	
+	
 	@GetMapping(value="/me")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER','ROLE_VISITOR')")
 	public ResponseEntity<UserDTO> getMe() {
@@ -35,7 +46,7 @@ public class UserController {
 	
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
 	@PostMapping(value="/newuser")
-	public ResponseEntity<UserPasswordDTO> newUser(@RequestBody UserPasswordDTO dto){
+	public ResponseEntity<UserPasswordDTO> newUser(@Valid @RequestBody UserPasswordDTO dto){
 		dto = service.insertUser(dto);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{users}").buildAndExpand(dto.getId()).toUri();
 		return ResponseEntity.created(uri).body(dto);

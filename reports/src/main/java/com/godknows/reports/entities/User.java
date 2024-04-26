@@ -38,9 +38,12 @@ public class User implements UserDetails{
 	private String phone;
 	private LocalDate birthDate;
 	private String password;
+	private Integer unit;
+	
 	
 	@OneToMany(mappedBy ="user")
 	private List<ReportDaily> reports = new ArrayList<>();
+	
 	
 	
 	@ManyToMany(fetch=FetchType.EAGER)
@@ -48,6 +51,11 @@ public class User implements UserDetails{
 			joinColumns = @JoinColumn(name="user_id"),
 			inverseJoinColumns = @JoinColumn(name="role_id"))
 	private Set<Role> roles = new HashSet<>();
+	
+	
+	
+	@OneToMany(mappedBy="resident")
+	private List<Complaint> complaints = new ArrayList<>();
 	
 	
 	public User() {
@@ -125,6 +133,16 @@ public class User implements UserDetails{
 	}
 	
 	
+	public Integer getUnit() {
+		return unit;
+	}
+
+
+	public void setUnit(Integer unit) {
+		this.unit = unit;
+	}
+
+
 	public List<ReportDaily> getReports() {
 		return reports;
 	}

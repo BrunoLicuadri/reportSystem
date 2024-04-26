@@ -1,0 +1,220 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+  --primary-font-color: #d9d9d9;
+  --secondary-color: #6d2f6d;
+  --dark-gray: #666;
+  --lihgt-grey: #9fbdbe;
+  --color-white: #fff;
+  --bg-btn-collor: #ff8400;
+  --bg-rpt-list-color: #333;
+  --error-msg: #f00;
+  --bg-delivery-card: rgb(134, 216, 134);
+  --bg-footer-back: #000;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'poppins', sans-serif;
+}
+
+a,
+a:hover {
+  text-decoration: none;
+  color: unset;
+}
+
+header, footer {
+  background-color: var(--dark-gray);
+}
+
+nav {
+  height: 120px;
+  background-color: var(--lihgt-grey);
+}
+
+label {
+  display: none;
+}
+
+
+/*GENERAL HEADERs CLASSES & IDs */
+
+.container {
+  width: 100%;
+  max-width: 960px;
+  padding: 10px;
+  margin: 0 auto;
+}
+
+.nav-items {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.condoTextClass{
+  font-size: 15px;
+  padding: 0 5px;
+}
+
+
+/* GENERAL CLASSES & IDs */
+
+.dflex {
+  display: flex;
+  margin-bottom: 5px;
+}
+
+.dblock{
+  display: block;
+}
+
+.date {
+  margin-right: 5px;
+}
+
+
+
+/* NOT FOUND GENERAL CLASSES */
+.img-control {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.image-size {
+  width: 100%;
+  max-width: 960px;
+  padding: 10px;
+  margin: 0 auto;
+}
+
+
+
+/* BOOTSTREP BREAKPOINTS */
+
+@media(min-width:576px) {
+
+  .condoTextClass {
+    font-size: 25px;
+    padding: 0 10px;
+  }
+
+  #report-section h2, #complain-section h2, #delivery-section h2 {
+    font-size: 25px;
+  }
+
+  .report-card-item, .complain-card-item {
+    font-size: 15px;
+  }
+
+  .deliveries-card-item{
+    font-size: 12px;
+  }
+
+  .login-container {
+    padding: 0 10px;
+  }
+
+  nav input {
+    width: 120px;
+    max-width: 190px;
+  }
+
+
+  nav input::placeholder {
+    font-size: 12px;
+  }
+
+  .loginTextClass {
+    margin: 0 10px;
+    font-size: 25px;
+  }
+
+
+  .btnClassSend {
+    width: 120px;
+    font-size: 12px;
+  }
+
+  .error-message {
+    font-size: 12px;
+    color: var(--error-msg);
+    margin-left: 10px;
+  }
+
+  .deliveries-card-details label {
+    display: flex;
+  }
+
+  .deliveryBoxImg{
+    width: 90px;
+    margin: 0 20px
+  }
+
+  /* FOOTER */
+  .footer-container {
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+  }
+
+  .footer-left-items {
+    height: 180px;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .condo-address {
+    font-size: 16px;
+  }
+
+}
+
+
+
+@media(min-width:768px) {
+
+  .condoTextClass {
+    padding: 0 10px;
+  }
+
+  .loginInputClass {
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  .login-container {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0
+  }
+
+
+  nav input {
+    width: 15vw;
+    margin: 0 5px;
+  }
+
+
+  nav input::placeholder {
+    font-size: 12px;
+  }
+
+  .loginTextClass {
+    margin: 0 8px;
+    font-size: 25px;
+  }
+
+  .btnClassSend {
+    width: 15vw;
+    max-width: 130px;
+    font-size: 12px;
+    margin: 0 5px;
+  }
+}

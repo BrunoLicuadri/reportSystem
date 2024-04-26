@@ -1,0 +1,42 @@
+
+.report-id-focus {
+    color: brown;
+    font-size: 25px;
+    font-weight: 400;
+    padding: 0 5px;
+    margin-top: 20px;
+}
+
+.report-card-item-focus {
+    background-color: var(--lihgt-grey);
+    color: var(--secondary-color);
+    margin: 0 0 20px 0;
+    border-radius:  5px;
+    padding: 20px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.rep-owner-focus {
+    direction: rtl;
+}
+
+.time-focus{
+    margin-left: 10px;
+}
+
+
+
+.report-card-item {
+    background-color: var(--lihgt-grey);
+    color: var(--secondary-color);
+    margin-bottom: 10px;
+    border-radius:  5px;
+    padding: 20px;
+    font-size: 10px;
+    cursor: pointer;
+}
+
+.rep-owner {
+    direction: rtl;
+}

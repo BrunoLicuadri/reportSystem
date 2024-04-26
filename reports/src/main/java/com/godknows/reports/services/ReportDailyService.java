@@ -48,7 +48,12 @@ public class ReportDailyService {
 	}
 	
 	
-	
+	@Transactional(readOnly = true)
+	public Page<ReportDailyDTO> previewFindAll(String name, Pageable pageable){
+		Page<ReportDaily> result = repository.searchByUser(name, pageable);
+		return result.map(x-> new ReportDailyDTO(x));
+	}
+
 	
 	@Transactional(readOnly = true)
 	public Page<ReportDailyDTO> serviceFindByDate(LocalDate date, Pageable pageable) {
@@ -112,5 +117,6 @@ public class ReportDailyService {
 		User user = userRepository.getReferenceById(dto.getUser().getId());
 		entity.setUser(user);
 	}
-	
+
+
 }

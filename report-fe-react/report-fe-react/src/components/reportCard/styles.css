@@ -1,0 +1,40 @@
+/* REPORTS´S CLASSES & IDs */
+
+
+.report-card-item {
+    background-color: var(--lihgt-grey);
+    color: var(--secondary-color);
+    margin-bottom: 10px;
+    border-radius:  5px;
+    padding: 20px;
+    font-size: 10px;
+    cursor: pointer;
+}
+
+.rep-owner {
+    direction: rtl;
+}
+
+.border-selected {
+    border: solid 2px var(--bg-btn-collor);
+}
+
+.dblock {
+    display: block;
+    margin: 1rem 0;
+    margin-bottom: 0px;
+}
+
+.search-put{
+    border-radius: 5px;
+    color: var(--dark-grey);
+    border: 1px solid var(--bg-btn-collor);
+    outline: none;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.search-put::placeholder{
+    padding-left: 5px;
+    color: var(--lihgt-grey)
+}

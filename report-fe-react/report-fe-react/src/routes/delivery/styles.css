@@ -1,0 +1,48 @@
+/* DELIVERIES CLASSES & IDs */
+
+#delivery-section h2 {
+    font-size: 15px;
+    padding: 0 5px;
+}
+
+
+.deliveries-card-item {
+    max-height: 183px;
+    display: flex;
+    align-items: center;
+    background-color: var(--bg-delivery-card);
+    margin-bottom: 10px;
+    border-radius: 5px;
+    font-size: 10px;
+}
+
+.deliveries-card-details label {
+    font-weight: 700;
+    margin: 5px 0;
+}
+
+.deliveries-card-details p {
+    display: flex;
+    margin: 5px 5px;
+}
+
+#deliveries-card-description{
+    display: flex;
+}
+
+
+.deliveries-card-details{
+    display: flex;
+    flex-direction: column;
+    width: 900px;
+}
+
+.deliveryBoxImg {
+    width: 80px;
+    margin: 0 10px;
+}
+
+.ctlStatus{
+    color: var(--error-msg);
+    padding: 0 10px;
+}

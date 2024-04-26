@@ -1,16 +1,31 @@
 package com.godknows.reports.dtos;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+
+import org.springframework.security.core.GrantedAuthority;
 
 import com.godknows.reports.entities.User;
 
 public class UserDTO {
 	
 	private Long id;
+	@NotBlank(message="Campo Obrigatório")
+    @Size(min=3,max=50, message="Mínimo de 3 e Máximo de 50 caracteres.")
 	private String name;
+	@NotBlank(message="Campo Obrigatório")
 	private String email;
+	@NotBlank(message="Campo Obrigatório")
 	private String phone;
 	private LocalDate birthDate;
+	
+	@NotEmpty(message="Deve ter pelo menos 1 escopo de autoridade")
+	private List<String> roles = new ArrayList<>();
 	
 	
 	public UserDTO() {
@@ -31,6 +46,10 @@ public class UserDTO {
 		email = entity.getEmail();
 		phone = entity.getPhone();
 		birthDate = entity.getBirthDate();
+		
+		for(GrantedAuthority role : entity.getAuthorities()) {
+			roles.add(role.getAuthority());
+		}
 	}
 
 
@@ -58,5 +77,9 @@ public class UserDTO {
 		return birthDate;
 	}
 
-	
+
+	public List<String> getRoles() {
+		return roles;
+	}
+
 }
