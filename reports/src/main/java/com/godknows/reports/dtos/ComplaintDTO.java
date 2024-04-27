@@ -17,7 +17,6 @@ public class ComplaintDTO {
 	@NotBlank(message="Campo Obrigatório")
     @Size(min=10,max=500, message="Mínimo de 10 e Máximo de 500 caracteres.")
 	private String text;
-	@NotBlank(message="Campo Obrigatório")
 	private ComplaintStatus status;
 
 	private UserDTO resident;
