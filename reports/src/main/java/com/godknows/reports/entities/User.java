@@ -28,8 +28,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 @Table(name="tb_user")
 public class User implements UserDetails{
 
-	
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -56,6 +54,14 @@ public class User implements UserDetails{
 	
 	@OneToMany(mappedBy="resident")
 	private List<Complaint> complaints = new ArrayList<>();
+	
+	@OneToMany(mappedBy="toUser")
+	private List<Delivery> toUserDeliveries = new ArrayList<>();
+	
+
+	//@OneToMany(mappedBy="user")
+	//private List<Delivery> userDeliveries = new ArrayList<>();
+	
 	
 	
 	public User() {
@@ -145,6 +151,14 @@ public class User implements UserDetails{
 
 	public List<ReportDaily> getReports() {
 		return reports;
+	}
+	
+	public List<Complaint> getComplaints() {
+		return complaints;
+	}
+
+	public List<Delivery> getToUserDeliveries() {
+		return toUserDeliveries;
 	}
 
 

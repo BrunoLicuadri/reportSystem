@@ -6,6 +6,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 import com.godknows.reports.entities.Complaint;
+import com.godknows.reports.entities.ComplaintStatus;
 
 public class ComplaintDTO {
 
@@ -17,13 +18,13 @@ public class ComplaintDTO {
     @Size(min=10,max=500, message="Mínimo de 10 e Máximo de 500 caracteres.")
 	private String text;
 	@NotBlank(message="Campo Obrigatório")
-	private String status;
+	private ComplaintStatus status;
 
 	private UserDTO resident;
 
 
 	
-	public ComplaintDTO(Long id, LocalDate date, String time, String text, String status, UserDTO resident) {
+	public ComplaintDTO(Long id, LocalDate date, String time, String text, ComplaintStatus status, UserDTO resident) {
 			this.id = id;
 			this.date = date;
 			this.time = time;
@@ -63,7 +64,7 @@ public class ComplaintDTO {
 	}
 	
 
-	public String getStatus() {
+	public ComplaintStatus getStatus() {
 		return status;
 	}
 

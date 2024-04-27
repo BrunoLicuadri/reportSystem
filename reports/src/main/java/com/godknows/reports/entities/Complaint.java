@@ -22,7 +22,7 @@ public class Complaint {
 	private String time;
 	@Column(columnDefinition = "TEXT")
 	private String text;
-	private String status;
+	private ComplaintStatus status;
 	
 	@ManyToOne
     @JoinColumn(name="user_id")
@@ -34,7 +34,7 @@ public class Complaint {
 	}
 
 
-	public Complaint(Long id, LocalDate date, String time, String text, String status, User resident) {
+	public Complaint(Long id, LocalDate date, String time, String text, ComplaintStatus status, User resident) {
 		this.id = id;
 		this.date = date;
 		this.time = time;
@@ -86,12 +86,12 @@ public class Complaint {
 	}
 	
 
-	public String getStatus() {
+	public ComplaintStatus getStatus() {
 		return status;
 	}
 
 
-	public void setStatus(String status) {
+	public void setStatus(ComplaintStatus status) {
 		this.status = status;
 	}
 
