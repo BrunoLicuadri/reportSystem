@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useState } from 'react';
 import { reportDTO } from '../../models/report';
 import * as reportService from '../../services/reportService';

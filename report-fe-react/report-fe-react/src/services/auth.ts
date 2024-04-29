@@ -1,7 +1,7 @@
 
 export type AccessTokenPayloadDTO = {
     exp: number;
-    userName : string;
+    user_name : string;
     "authorities": RoleEnum[];
 }
 

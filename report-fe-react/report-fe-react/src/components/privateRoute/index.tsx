@@ -8,10 +8,7 @@ type Props ={
 }
 
 export function PrivateRoute( {children, roles=[]}: Props){
-    if (!isAuthenticated) {
-        return <Navigate to="/tralala" />
-    }
-    if (!hasAnyRoles(roles)){
+    if (!isAuthenticated || !hasAnyRoles(roles)) {
         return <Navigate to="/tralala" />
     }
     return children;

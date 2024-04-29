@@ -22,7 +22,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.godknows.reports.dtos.DeliveryDTO;
-import com.godknows.reports.dtos.ReportDailyDTO;
 import com.godknows.reports.services.DeliveryServices;
 
 @RestController

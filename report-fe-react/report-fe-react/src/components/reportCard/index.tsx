@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { reportDTO } from '../../models/report';
@@ -41,7 +42,7 @@ export default function ReportCard() {
                     const reportDate = report.date;
                     return (reportText.startsWith(text.toLowerCase()) || reportDate.startsWith(text));
                 })
-                .map((rep: any) => (
+                .map((rep) => (
                     <QueryLink
                         className={({ isActive }: any) => isActive ? "border-selected dblock" : " "}
                         to={`/reports/${rep.id}`}
