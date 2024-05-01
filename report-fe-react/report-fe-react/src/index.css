@@ -95,6 +95,29 @@ label {
   border: solid 2px var(--bg-btn-collor);
 }
 
+.ml20{
+  margin-left: 20px;
+}
+
+.mr20{
+  margin-right: 20px;
+}
+
+.editDeleteMenu{
+  display: flex;
+  direction: rtl;
+  margin-top: none;
+  margin-bottom: 10px;
+}
+
+.deleteIcon {
+  cursor: pointer;
+}
+
+.editIcon{
+  cursor: pointer;
+}
+
 
 /* NOT FOUND GENERAL CLASSES */
 .img-control {
@@ -109,6 +132,7 @@ label {
   padding: 10px;
   margin: 0 auto;
 }
+
 
 
 
