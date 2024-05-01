@@ -23,6 +23,7 @@ public class UserDTO {
 	@NotBlank(message="Campo Obrigatório")
 	private String phone;
 	private LocalDate birthDate;
+	private Integer unit;
 	
 	@NotEmpty(message="Deve ter pelo menos 1 escopo de autoridade")
 	private List<String> roles = new ArrayList<>();
@@ -32,12 +33,13 @@ public class UserDTO {
 	}
 
 
-	public UserDTO(Long id, String name, String email, String phone, LocalDate birthDate) {
+	public UserDTO(Long id, String name, String email, String phone, LocalDate birthDate, Integer unit) {
 		this.id = id;
 		this.name = name;
 		this.email = email;
 		this.phone = phone;
 		this.birthDate = birthDate;
+		this.unit = unit;
 	}
 	
 	public UserDTO(User entity) {
@@ -46,6 +48,7 @@ public class UserDTO {
 		email = entity.getEmail();
 		phone = entity.getPhone();
 		birthDate = entity.getBirthDate();
+		unit = entity.getUnit();
 		
 		for(GrantedAuthority role : entity.getAuthorities()) {
 			roles.add(role.getAuthority());
@@ -75,6 +78,11 @@ public class UserDTO {
 
 	public LocalDate getBirthDate() {
 		return birthDate;
+	}
+	
+	
+	public Integer getUnit() {
+		return unit;
 	}
 
 

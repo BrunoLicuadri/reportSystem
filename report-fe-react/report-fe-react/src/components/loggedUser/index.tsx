@@ -20,6 +20,7 @@ export default function LoggedUser() {
     function handleClick() {
         authService.logout();
         setContextTokenPayload(undefined);
+        navigate("/");
 
     }
 

@@ -77,6 +77,23 @@ label {
   margin-right: 5px;
 }
 
+.search-put {
+  border-radius: 5px;
+  color: var(--dark-grey);
+  border: 1px solid var(--bg-btn-collor);
+  outline: none;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.search-put::placeholder {
+  padding-left: 5px;
+  color: var(--lihgt-grey)
+}
+
+.border-selected {
+  border: solid 2px var(--bg-btn-collor);
+}
 
 
 /* NOT FOUND GENERAL CLASSES */
@@ -153,7 +170,7 @@ label {
 
   .deliveryBoxImg{
     width: 90px;
-    margin: 0 20px
+    margin: 10px 20px
   }
 
   /* FOOTER */

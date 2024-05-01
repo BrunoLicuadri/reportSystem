@@ -7,7 +7,6 @@
 
 
 .deliveries-card-item {
-    max-height: 183px;
     display: flex;
     align-items: center;
     background-color: var(--bg-delivery-card);
@@ -39,7 +38,7 @@
 
 .deliveryBoxImg {
     width: 80px;
-    margin: 0 10px;
+    margin: 10px 10px;
 }
 
 .ctlStatus {
@@ -50,18 +49,4 @@
 .pendingSts {
     color: var(--error-msg);
     padding: 0 10px;
-}
-
-.search-put {
-    border-radius: 5px;
-    color: var(--dark-grey);
-    border: 1px solid var(--bg-btn-collor);
-    outline: none;
-    padding: 5px;
-    margin-bottom: 10px;
-}
-
-.search-put::placeholder {
-    padding-left: 5px;
-    color: var(--lihgt-grey)
 }

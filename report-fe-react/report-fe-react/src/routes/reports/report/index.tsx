@@ -10,10 +10,10 @@ import './styles.css';
 export default function Report() {
 
     const params = useParams();
-    
+
     const [report, setReport] = useState<reportDTO>();
 
-    
+
     useEffect(() => {
         reportService.findById(Number(params.reportId))
             .then(response => {
@@ -26,7 +26,7 @@ export default function Report() {
     }, [params.reportId]);
 
     return (
-        report &&<>
+        report && <>
             <h3 className="report-id-focus">Relatório # {params.reportId}</h3>
 
             <div className="report-card-item-focus">

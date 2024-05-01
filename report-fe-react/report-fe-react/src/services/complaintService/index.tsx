@@ -5,7 +5,7 @@ import { requestBackend } from "../../utils/requests";
 export function findAll() {
 
     const config: AxiosRequestConfig = {
-        url: `/deliveries/?sort=date,desc`,
+        url: `/complaints/?sort=date,desc`,
         withCredentials: true
     }
 
@@ -17,7 +17,7 @@ export function findAll() {
 export function findById(id: number) {
 
     const config: AxiosRequestConfig = {
-        url: `/deliveries/id/${id}`,
+        url: `/complaints/id/${id}`,
         withCredentials: true
     }
 
@@ -25,10 +25,10 @@ export function findById(id: number) {
 }
 
 
-export function deliveryPreview() {
+export function complaintsPreview() {
 
     const config: AxiosRequestConfig = {
-        url: `/deliveries/preview/?size=4&sort=date,desc`,
+        url: `/complaints/preview/?size=4&sort=date,desc`,
         withCredentials: false
     }
 

@@ -1,13 +1,12 @@
 /* DELIVERIES CLASSES & IDs */
 
-#delivery-section h2 {
+.delivery-title {
     font-size: 15px;
     padding: 0 5px;
 }
 
 
 .deliveries-card-item {
-    max-height: 183px;
     display: flex;
     align-items: center;
     background-color: var(--bg-delivery-card);
@@ -39,7 +38,7 @@
 
 .deliveryBoxImg {
     width: 80px;
-    margin: 0 10px;
+    margin: 10px 10px;
 }
 
 .delivery-id-focus {

@@ -9,7 +9,7 @@ export default function Deliveries() {
             <section id="delivery-section" className="container">
                 <h2>Relatórios de Encomendas</h2>
                 <Outlet />
-                <DeliveryCard/>
+                <DeliveryCard />
             </section>
         </main>
 

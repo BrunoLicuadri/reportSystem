@@ -1,7 +1,6 @@
 import { UserDTO } from "./user";
 
-export type DeliveryDTO = {
-
+export type deliveryDTO = {
 	id: number;
 	imgUrl: string;
 	description: string;

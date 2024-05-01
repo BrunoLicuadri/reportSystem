@@ -15,9 +15,6 @@
     direction: rtl;
 }
 
-.border-selected {
-    border: solid 2px var(--bg-btn-collor);
-}
 
 .dblock {
     display: block;

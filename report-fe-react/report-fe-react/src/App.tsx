@@ -1,19 +1,21 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import Header from './components/header'
-import Reports from './routes/reports'
-import Home from './routes/home'
-import Subscribe from './routes/subscribe'
-import Report from './routes/reports/report'
-import NotFoundPage from './components/notFoundPage'
-import LoggedInHeader from './components/loggedInHeader'
-import { PrivateRoute } from './components/privateRoute'
-import Complain from './routes/complain'
-import Delivery from './routes/deliveries'
-import Deliveries from './routes/deliveries'
-import { AccessTokenPayloadDTO } from './services/auth'
-import { ContextToken } from './utils/contextTokenPayload'
 import { useEffect, useState } from 'react'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { PrivateRoute } from './components/privateRoute'
+import { ContextToken } from './utils/contextTokenPayload'
+import { AccessTokenPayloadDTO } from './services/auth'
+import Header from './components/header'
+import NotFoundPage from './components/notFoundPage'
+import Delivery from './routes/deliveries/delivery'
+import Deliveries from './routes/deliveries'
+import Complain from './routes/complaints'
+import Home from './routes/home'
+import Reports from './routes/reports'
+import Report from './routes/reports/report'
+import Subscribe from './routes/subscribe'
 import * as authService from './services/authService'
+import Complaints from './routes/complaints'
+import Complaint from './routes/complaints/complaint'
+
 
 function App() {
 
@@ -36,7 +38,9 @@ function App() {
             <Route path="reports" element={<PrivateRoute roles={['ROLE_USER', 'ROLE_ADMIN']}><Reports /></PrivateRoute>} >
               <Route path=":reportId" element={<Report />} />
             </Route>
-            <Route path="complains" element={<PrivateRoute roles={['ROLE_USER', 'ROLE_ADMIN', 'ROLE_VISITOR']}><Complain /></PrivateRoute>} />
+            <Route path="complaints" element={<PrivateRoute roles={['ROLE_USER', 'ROLE_ADMIN', 'ROLE_VISITOR']}><Complaints /></PrivateRoute>} >
+              <Route path=":complaintId" element={<Complaint />} />
+            </Route>
             <Route path="deliveries" element={<PrivateRoute roles={['ROLE_USER', 'ROLE_ADMIN', 'ROLE_VISITOR']}><Deliveries /></PrivateRoute>} >
               <Route path=":deliveryId" element={<Delivery />} />
             </Route>

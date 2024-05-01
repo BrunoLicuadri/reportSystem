@@ -1,13 +1,13 @@
+import ComplaintsPreview from "../../components/complaintsPreview";
 import DeliveryPreview from "../../components/deliveryPreview";
 import Footer from "../../components/footer";
 import ReportPreview from "../../components/reportPreview";
-import Complain from "../complain";
 
 export default function Home() {
     return (
         <>
             <ReportPreview />
-            <Complain />
+            <ComplaintsPreview />
             <DeliveryPreview />
             <Footer />
         </>

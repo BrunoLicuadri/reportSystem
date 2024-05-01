@@ -1,54 +1,57 @@
-import '../styles.css'
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import * as deliveryService from '../../../services/deliveryService'
 import NotFoundData from "../../../components/notFoundData";
-import { DeliveryDTO } from "../../../models/delivery";
+import { deliveryDTO } from "../../../models/delivery";
+import * as deliveryService from '../../../services/deliveryService';
+import '../styles.css';
+
+
 
 export default function Delivery() {
 
     const params = useParams();
 
-    const [delivery, setDetivery] = useState<DeliveryDTO>();
+    const [delivery, setDelivery] = useState<deliveryDTO>();
 
-    useEffect( ()=>{
+    useEffect(() => {
         deliveryService.findById(Number(params.deliveryId))
-        .then( response =>{
-            setDetivery(response.data)
-        }
-        )
-        .catch( ()=>{
-            <NotFoundData/>
-        })
+            .then(response => {
+                setDelivery(response.data);
+            })
+            .catch(() => {
+                <NotFoundData />;
+            })
     }, [params.deliveryId]);
 
     return (
-        delivery &&<>
-        <h3 className="delivery-id-focus">Encomenda # {params.deliveryId}</h3>
-            <img className="deliveryBoxImg" src={delivery.imgUrl} alt="Encomendas.png" />
-            <div className="deliveries-card-details">
-                <div id="deliveries-card-description">
-                    <label>Destino: </label>
-                    <p className="deliveryName">{delivery.toUser.name}
-                    </p>
-                </div>
+        delivery && <>
+            <h3 className="delivery-id-focus">Encomenda # {params.deliveryId}</h3>
+            <div className="deliveries-card-item">
+                <img className="deliveryBoxImg" src={delivery.imgUrl} alt="Encomendas.png" />
+                <div className="deliveries-card-details">
+                    <div id="deliveries-card-description">
+                        <label>Destino: </label>
+                        <p className="deliveryName">{delivery.toUser.name}
+                        </p>
+                    </div>
 
-                <div id="deliveries-card-description">
-                    <label>Descrição: </label>
-                    <p className="deliveryDescription">{delivery.description}
-                    </p>
-                </div>
+                    <div id="deliveries-card-description">
+                        <label>Descrição: </label>
+                        <p className="deliveryDescription">{delivery.description}
+                        </p>
+                    </div>
 
-                <div id="deliveries-card-description">
-                    <label>Id: </label>
-                    <p className="deliveryId">{delivery.id}</p>
-                </div>
+                    <div id="deliveries-card-description">
+                        <label>Id: </label>
+                        <p className="deliveryId">{delivery.id}</p>
+                    </div>
 
-                <div id="status" className="ctlStatus">
-                    <p className="peding-status">{delivery.status}</p>
-                </div>
+                    <div id="status" className="ctlStatus">
+                        <p className="peding-status">{delivery.status}</p>
+                    </div>
 
+                </div>
             </div>
         </>
-    );
+    )
 }

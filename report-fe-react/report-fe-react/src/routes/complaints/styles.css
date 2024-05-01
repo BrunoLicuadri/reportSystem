@@ -1,0 +1,30 @@
+/* COMPLAIN´s  CLASSES & IDs */
+
+#complain-section h2 {
+    font-size: 15px;
+    padding: 0 5px;
+}
+
+.complain-card-item {
+    background-color: var(--secondary-color);
+    color: var(--color-white);
+    margin-bottom: 10px;
+    border-radius:  5px;
+    padding: 20px;
+    font-size: 10px;
+    cursor: pointer;
+}
+
+
+.comp-owner {
+    direction: rtl;
+    margin-top: 10px;
+}
+
+.complaint-id-focus {
+    color: brown;
+    font-size: 25px;
+    font-weight: 400;
+    padding: 0 5px;
+    margin-top: 20px;
+}
