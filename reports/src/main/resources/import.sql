@@ -50,6 +50,18 @@ INSERT INTO tb_report (date, time, text, user_id) VALUES ('2022-08-05', '08:00',
 INSERT INTO tb_report (date, time, text, user_id) VALUES ('2022-08-05', '16:25', 'Cistena e gerador verificados e tudo ok.', 3);
 INSERT INTO tb_report (date, time, text, user_id) VALUES ('2022-08-05', '20:42', 'Moradores informaram a troca de carro para HB20 Prata', 4);
 INSERT INTO tb_report (date, time, text, user_id) VALUES ('2022-08-05', '23:22', 'Moradores utilizaram da churrasqueira e não limparam', 4);
+INSERT INTO tb_report (date, time, text, user_id) VALUES ('2023-09-25', '05:00', 'Pensar em mais 32 reports para testes', 1);
+INSERT INTO tb_report (date, time, text, user_id) VALUES ('2023-09-29', '15:15', 'Na festa de ontem um zé lelé jogou uma bola de sinuca dentro do gol da mesa de totó. Pense.', 2);
+INSERT INTO tb_report (date, time, text, user_id) VALUES ('2023-10-03', '18:22', 'Portão quebrado, cameras falhando, elevador com pane.', 3);
+INSERT INTO tb_report (date, time, text, user_id) VALUES ('2023-10-03', '21:22', 'De novo usaram a churrasqueira e não lavaram. Me pagarm 50tão pra lavar. Eu lavei!.', 4);
+INSERT INTO tb_report (date, time, text, user_id) VALUES ('2023-11-04', '07:00', 'Moradores novos no condomínio. Sai Frrreeeed e entra Fabiana. Volta Fred, volta.', 1);
+INSERT INTO tb_report (date, time, text, user_id) VALUES ('2023-11-04', '15:15', 'Morador achou boa ideia usar furadeira num sabadão fim de tarde. Deu ruim.', 1);
+INSERT INTO tb_report (date, time, text, user_id) VALUES ('2023-12-04', '19:22', 'Briga de mulher ainda está na moda ??? 6 andar vai precisar de ringue.', 2);
+INSERT INTO tb_report (date, time, text, user_id) VALUES ('2023-12-04', '21:22', 'Novo hóspede para o 403', 2);
+INSERT INTO tb_report (date, time, text, user_id) VALUES ('2024-01-05', '08:00', 'Misericórdia... Misericórdia.... Misericórdia.... preciso mudar de emprego logooooo!!! Ajuda ai Destino.', 3);
+INSERT INTO tb_report (date, time, text, user_id) VALUES ('2024-01-07', '16:25', 'Puts.... derrubei e quebrei minha xícara e café.... e ainda tenho metade da jarra. Lasquei-me-ei.', 3);
+INSERT INTO tb_report (date, time, text, user_id) VALUES ('2024-02-12', '20:42', 'Maaaaannuuuuuuu... ganhei baita bandeja de sushi. Top d+. Vida Longa ao Joselitooooo vivaaa', 4);
+INSERT INTO tb_report (date, time, text, user_id) VALUES ('2024-02-21', '23:22', 'Será que se eu me drogar eu melhoro minha logica de codar ?!?!?!', 4);
 
 INSERT INTO tb_complaint (date, time, text, status, user_id) VALUES ('2022-07-25', '12:23', 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nobis cupiditate inventore, illum reiciendis molestias fuga voluptas commodi ipsam non aliquam deleniti magnam vel esse eos? Nulla dignissimos cum ab adipisci.', 1, 8);
 INSERT INTO tb_complaint (date, time, text, status, user_id) VALUES ('2022-06-05', '17:15', 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nobis cupiditate inventore, illum reiciendis molestias fuga voluptas commodi ipsam non aliquam deleniti magnam vel esse eos? Nulla dignissimos cum ab adipisci.', 2, 9);

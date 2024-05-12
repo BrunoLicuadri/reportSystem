@@ -1,0 +1,6 @@
+.gkr-btn-white {
+  border: 1px solid var(--bg-btn-collor);
+  background-color: var(--color-white);
+  color: var(--bg-btn-collor);
+  max-width: 175px;
+}

@@ -8,9 +8,28 @@
   --color-white: #fff;
   --bg-btn-collor: #ff8400;
   --bg-rpt-list-color: #333;
-  --error-msg: #f00;
+  --error-msg: #f33;
   --bg-delivery-card: rgb(134, 216, 134);
   --bg-footer-back: #000;
+  --gk-color-bg-primary: #e8e8e8;
+  --gk-color-bg-secondary: #ffe500;
+  --gk-color-bg-terciary: #636363;
+  --gk-color-bg-quaternary: #0caf1d;
+
+  --gk-color-card-bg: #fff;
+  --gk-color-card-border: #d9d9d9;
+  --gk-color-cart-notification-bg: #f00;
+
+  --gk-color-btn-primary: #3483fa;
+  --gk-color-btn-inverse: #fff;
+
+  --gk-color-font-primary: #636363;
+  --gk-color-font-secondary: #0caf1d;
+  --gk-color-font-tertiary: #fff;
+
+  --gk-color-error: #f33;
+
+  --gk-color-font-placeholder: #d9d9d9;
 }
 
 * {
@@ -103,6 +122,14 @@ label {
   margin-right: 20px;
 }
 
+.gkr-mb20 {
+  margin-bottom: 20px;
+}
+
+.gkr-mt20 {
+  margin-top: 20px;
+}
+
 .editDeleteMenu{
   display: flex;
   direction: rtl;
@@ -117,6 +144,52 @@ label {
 .editIcon{
   cursor: pointer;
 }
+
+.gkr-btn {
+  width: 100%;
+  height: 42px;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.gkr-btn-blue {
+  background-color: var(--gk-color-card-bg);
+  color: var(--bg-btn-collor);
+  border: solid 1px var(--lihgt-grey);
+  max-width: 175px;
+}
+
+.gkr-btn-white {
+  border: 1px solid var(--bg-btn-collor);
+  background-color: var(--color-white);
+  color: var(--bg-btn-collor);
+  max-width: 175px;
+}
+
+.gkr-textarea {
+  resize: none;
+  height: 128px;
+  padding-top: 10px;
+}
+
+.gkr-form-control:focus {
+  outline: none;
+}
+
+.gkr-form-control::placeholder{
+  font-size: 10px;
+  color: var(--primary-font-color);
+}
+
+.gkr-form-control[data-dirty="true"][data-invalid="true"] ~ div{
+  display: unset;
+}
+
 
 
 /* NOT FOUND GENERAL CLASSES */
@@ -258,4 +331,47 @@ label {
     font-size: 12px;
     margin: 0 5px;
   }
+}
+
+/* DIALOG CLASSES*/
+
+.gkr-dialog-info-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+
+.gkr-dialog-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  background-color: var(--gk-color-card-bg);
+}
+
+.gkr-dialog-box h2 {
+  font-size: 20px;
+  color: var(--gk-color-font-primary);
+  margin-bottom: 20px;
+}
+
+.gkr-dialog-btn-container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+}
+
+.gkr-dialog-btn {
+  width: 100%;
 }

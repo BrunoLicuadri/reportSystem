@@ -1,6 +1,7 @@
 package com.godknows.reports.controllers;
 
 import java.net.URI;
+import java.util.List;
 
 import javax.validation.Valid;
 
@@ -10,6 +11,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.godknows.reports.dtos.UserDTO;
+import com.godknows.reports.dtos.UserMinDTO;
 import com.godknows.reports.dtos.UserPasswordDTO;
 import com.godknows.reports.services.UserService;
 
@@ -34,7 +37,15 @@ public class UserController {
 	@GetMapping
 	public ResponseEntity<Page<UserDTO>> findAll(Pageable pageable){
 		return ResponseEntity.ok(service.findAll(pageable));
-	}	
+	}
+	
+	
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
+	@GetMapping(value="/role/{roleName}")
+	public ResponseEntity<List<UserMinDTO>> findUsersByRole(@PathVariable String roleName){
+		return ResponseEntity.ok(service.findUsersByRole(roleName));
+	}
+	
 	
 	
 	@GetMapping(value="/me")
@@ -43,6 +54,17 @@ public class UserController {
 		UserDTO dto = service.getme();
 		return ResponseEntity.ok(dto);
 	}
+	
+	
+	
+	@GetMapping(value="/user/{username}")
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
+	public ResponseEntity<UserDTO> getUser(@PathVariable String username) {
+		UserDTO dto = service.getUserName(username);
+		return ResponseEntity.ok(dto);
+	}
+	
+	
 	
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
 	@PostMapping(value="/newuser")

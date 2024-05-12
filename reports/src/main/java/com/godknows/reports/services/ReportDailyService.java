@@ -109,7 +109,7 @@ public class ReportDailyService {
 	}
 
 	
-	
+	/*
 	private void copyDtoToEntity (ReportDailyDTO dto, ReportDaily entity) {
 		entity.setDate(dto.getDate());
 		entity.setTime(dto.getTime());
@@ -117,6 +117,16 @@ public class ReportDailyService {
 		User user = userRepository.getReferenceById(dto.getUser().getId());
 		entity.setUser(user);
 	}
+	 */
+	private void copyDtoToEntity (ReportDailyDTO dto, ReportDaily entity) {
+		entity.setDate(dto.getDate());
+		entity.setTime(dto.getTime());
+		entity.setText(dto.getText());
 
+		User userByName = userRepository.findByName(dto.getUser().getName());
+		User user = userRepository.getReferenceById(userByName.getId());
+
+		entity.setUser(userByName);
+	}
 
 }

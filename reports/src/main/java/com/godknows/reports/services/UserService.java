@@ -1,5 +1,8 @@
 package com.godknows.reports.services;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -13,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.godknows.reports.dtos.RoleDTO;
 import com.godknows.reports.dtos.UserDTO;
+import com.godknows.reports.dtos.UserMinDTO;
 import com.godknows.reports.dtos.UserPasswordDTO;
 import com.godknows.reports.entities.Role;
 import com.godknows.reports.entities.User;
@@ -24,7 +28,7 @@ public class UserService implements UserDetailsService {
 
 	@Autowired
 	public UserRepository repository;
-	
+
 	@Autowired
 	public RoleRepository roleRepository;
 
@@ -56,10 +60,24 @@ public class UserService implements UserDetailsService {
 	}
 
 	@Transactional(readOnly = true)
+	public List<UserMinDTO> findUsersByRole(String roleName) {
+		List<User> result = repository.searchUsersByRole(roleName);
+		return result.stream().map(x -> new UserMinDTO(x)).collect(Collectors.toList());
+	}
+
+	@Transactional(readOnly = true)
 	public UserDTO getme() {
 		User entity = authenticated();
 		return new UserDTO(entity);
 	}
+	
+	
+	@Transactional(readOnly = true)
+	public UserDTO getUserName(String userName) {
+		User entity = repository.findByName(userName);
+		return new UserDTO(entity);
+	}
+	
 
 	@Transactional
 	public UserPasswordDTO insertUser(UserPasswordDTO dto) {

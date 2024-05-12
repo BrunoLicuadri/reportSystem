@@ -1,4 +1,3 @@
-import { UserDTO } from "./user";
 
 export type deliveryDTO = {
 	id: number;
@@ -8,5 +7,5 @@ export type deliveryDTO = {
 	date: string;
 	time: string;
 
-	toUser: UserDTO;
+	toUser: string;
 }

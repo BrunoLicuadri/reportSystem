@@ -27,6 +27,27 @@
 
 .inputClassName {
     font-size: 10px;
+    display: block;
+}
+
+.inputClassPassword{
+    display: block;
+}
+
+.inputClassName[data-dirty="true"][data-invalid="true"] {
+    border: solid 1px var(--gk-color-error);
+}
+
+.inputClassName[data-dirty="true"][data-invalid="true"]~div {
+    display: unset;
+}
+
+.inputClassPassword[data-dirty="true"][data-invalid="true"] {
+    border: solid 1px var(--gk-color-error);
+}
+
+.inputClassPassword[data-dirty="true"][data-invalid="true"]~div {
+    display: unset;
 }
 
 nav input{
@@ -62,8 +83,10 @@ nav input::placeholder{
 
 .error-message {
     font-size: 8px;
+    font-weight: 400;
     color: var(--error-msg);
-    margin-left: 10px;
+    padding-left: 4px;
+    display: none;
 }
 
 

@@ -1,0 +1,6 @@
+.gkr-btn-blue {
+  background-color: none;
+  color: var(--bg-btn-collor);
+  border: solid 1px var(--lihgt-grey);
+  max-width: 175px;
+}

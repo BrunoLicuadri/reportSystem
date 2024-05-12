@@ -1,20 +1,20 @@
 import { useEffect, useState } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { PrivateRoute } from './components/privateRoute'
-import { ContextToken } from './utils/contextTokenPayload'
-import { AccessTokenPayloadDTO } from './services/auth'
 import Header from './components/header'
 import NotFoundPage from './components/notFoundPage'
-import Delivery from './routes/deliveries/delivery'
+import { PrivateRoute } from './components/privateRoute'
+import ReportForms from './components/reportForm'
+import Complaints from './routes/complaints'
+import Complaint from './routes/complaints/complaint'
 import Deliveries from './routes/deliveries'
-import Complain from './routes/complaints'
+import Delivery from './routes/deliveries/delivery'
 import Home from './routes/home'
 import Reports from './routes/reports'
 import Report from './routes/reports/report'
 import Subscribe from './routes/subscribe'
+import { AccessTokenPayloadDTO } from './services/auth'
 import * as authService from './services/authService'
-import Complaints from './routes/complaints'
-import Complaint from './routes/complaints/complaint'
+import { ContextToken } from './utils/contextTokenPayload'
 
 
 function App() {
@@ -38,6 +38,7 @@ function App() {
             <Route path="reports" element={<PrivateRoute roles={['ROLE_USER', 'ROLE_ADMIN']}><Reports /></PrivateRoute>} >
               <Route path=":reportId" element={<Report />} />
             </Route>
+            <Route path="reports/manage/:repoId" element={<ReportForms />} />
             <Route path="complaints" element={<PrivateRoute roles={['ROLE_USER', 'ROLE_ADMIN', 'ROLE_VISITOR']}><Complaints /></PrivateRoute>} >
               <Route path=":complaintId" element={<Complaint />} />
             </Route>

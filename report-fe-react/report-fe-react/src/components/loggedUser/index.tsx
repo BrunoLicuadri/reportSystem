@@ -1,10 +1,12 @@
-import { useContext, useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { CredentialsDTO } from '../../models/auth';
-import * as authService from '../../services/authService';
-import { ContextToken } from '../../utils/contextTokenPayload';
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import './styles.css';
+import { useContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { ContextToken } from '../../utils/contextTokenPayload';
 import FormInput from '../formInput';
+import * as authService from '../../services/authService';
+import * as forms from '../../utils/forms';
+
 
 export default function LoggedUser() {
 
@@ -16,9 +18,10 @@ export default function LoggedUser() {
             type: "text",
             placeholder: "Email",
             validation: function (value: string) {
-                return /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(value.toLowerCase());
+                //return /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(value.toLowerCase());
+                return /^.{3,15}$/.test(value);
             },
-            message: "Favor informar um usuário válido",
+            message: "Informe um usuário válido.",
         },
         password: {
             value: "",
@@ -26,6 +29,11 @@ export default function LoggedUser() {
             name: "password",
             type: "password",
             placeholder: "Senha",
+            validation: function (value: string) {
+                //return /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(value.toLowerCase());
+                return /^.{6,15}$/.test(value);
+            },
+            message: "Min de 3 e máx de 15 caracteres",
         }
     })
 
@@ -43,7 +51,7 @@ export default function LoggedUser() {
 
     function handleSubmit(event: any) {
         event.preventDefault();
-        authService.loginRequest({username: formData.username.value, password: formData.password.value})
+        authService.loginRequest(forms.toValues(formData))
             .then((response) => {
                 authService.saveAccessToken(response.data.access_token);
                 setContextTokenPayload(authService.getAccessTokenPayload());
@@ -54,9 +62,13 @@ export default function LoggedUser() {
     }
 
     function handleInputChange(event: any) {
-        const value = event.target.value;
-        const name = event.target.name;
-        setFormData({ ...formData, [name]: {...formData[name], value: value} });
+        const result = forms.updateAndValidate(formData, event.target.name, event.target.value);
+        setFormData(result);
+    }
+
+    function handleTurnDirty(name: string){
+        const newFormData = forms.dirtyAndValidate(formData, name);
+        setFormData(newFormData);
     }
 
     return (
@@ -75,17 +87,19 @@ export default function LoggedUser() {
                             <FormInput
                                 {...formData.username}
                                 className="inputClassName"
+                                onTurnDirty={handleTurnDirty}
                                 onChange={handleInputChange}
                             />
-                            <div className="error-message" data-error="name"></div>
+                            <div className="error-message" data-error="name" >{formData.username.message}</div>
                         </div>
                         <div>
                             <FormInput
                                 {...formData.password}
                                 className="inputClassPassword"
+                                onTurnDirty={handleTurnDirty}
                                 onChange={handleInputChange}
                             />
-                            <div className="error-message" data-error="password"></div>
+                            <div className="error-message" data-error="password">{formData.password.message}</div>
                         </div>
                         <div>
                             <button
