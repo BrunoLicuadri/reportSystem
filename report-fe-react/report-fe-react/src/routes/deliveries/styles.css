@@ -48,3 +48,9 @@
     padding: 0 5px;
     margin-top: 20px;
 }
+
+.date-rtl{
+    width: 100%;
+    direction: rtl;
+    color: var(--dark-gray);
+}

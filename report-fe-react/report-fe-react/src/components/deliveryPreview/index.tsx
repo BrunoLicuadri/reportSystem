@@ -43,13 +43,21 @@ export default function DeliveryPreview() {
                                         </p>
                                     </div>
 
-                                    <div id="deliveries-card-description">
-                                        <label>Id: </label>
-                                        <p className="deliveryId">{deliver.id}</p>
-                                        <div id="status" className="ctlStatus">
-                                            <p className="peding-status">{deliver.status}</p>
+                                    <div className="dflex">
+                                        <div id="deliveries-card-description">
+                                            <label>Id: </label>
+                                            <p className="deliveryId">{deliver.id}</p>
+                                            <div id="status" className="ctlStatus">
+                                                <p className="peding-status">{deliver.status}</p>
+                                            </div>
+
                                         </div>
+                                        <div className="date date-rtl">
+                                            <p>{deliver.date}</p>
+                                        </div>
+
                                     </div>
+
 
                                 </div>
                             </div>

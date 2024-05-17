@@ -32,6 +32,7 @@ export default function ReportCard() {
 
     const [searchParams, setSearchParams] = useSearchParams();
     const [tokenPayload, setTokenPayload] = useState<AccessTokenPayloadDTO>();
+    
     const [reports, setReports] = useState<reportDTO[]>([]);
     const navigate = useNavigate();
 
@@ -128,7 +129,7 @@ export default function ReportCard() {
                     />
                     <button type='reset' onClick={handleResetClick}>🗙</button>
                 </form>
-                <div className="gkr-mb20">
+                <div className="gkr-mb20 gkr-mt20">
                     <div onClick={handleOnclickNewReport}>
                         <ButtonBlue text='Novo Relatório' />
                     </div>

@@ -1,35 +1,46 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import * as reportService from '../../services/reportService';
-import { ContextUser } from "../../utils/contextUserData";
+import Select from "react-select";
+import * as complaintService from '../../services/complaintService';
 import * as forms from '../../utils/forms';
 import FormInput from "../formInput";
 import FormTextarea from '../formTextarea';
+import {ComplaintStatus} from '../../models/complaint';
 import './styles.css';
 
 
-export default function ReportForms() {
+export default function ComplaintForms() {
 
     const params = useParams();
     const navigate = useNavigate();
 
-    const { contextUserData, setcontextUserData } = useContext(ContextUser);
 
-    const isEditing = params.repoId !== "create";
+    const isEditing = params.compId !== "create";
+
 
     const [formData, setFormData] = useState<any>({
-        user: {
-            value: { contextUserData },
-            id: "user",
-            name: "user",
-            email: "user",
+        resident: {
+            value: "",
+            id: "resident",
+            name: "resident",
             type: "text",
             placeholder: "Usuário",
             validation: function (value: any) {
                 return /^.{3,15}$/.test(value);
             },
-            message: "Nome deve ter min de 3 caracteres e máx de 15."
+            message: "Nome deve ter min de 3 caracteres e máx de 15"
+        },
+        unit: {
+            value: "",
+            id: "unit",
+            name: "unit",
+            type: "number",
+            placeholder: "Apto",
+            validation: function (value: any) {
+                return /^[1-9][0-9]{2,3}$/.test(value);
+            },
+            message: "Apto deve ter 3 ou 4 e não pode iniciar com 0"
         },
         date: {
             value: "",
@@ -54,28 +65,23 @@ export default function ReportForms() {
             validation: function (value: any) {
                 return /^.{10,}$/.test(value);
             },
-            message: "Descrição deve ter pelo menos 10 caracteres."
+            message: "Descrição deve ter pelo menos 10 caracteres"
         }
-
     });
 
-
- 
 
 
     useEffect(() => {
         if (isEditing) {
-            reportService.findById(Number(params.repoId))
+            complaintService.findById(Number(params.compId))
                 .then(response => {
-                    setcontextUserData(response.data.user);
                     setFormData(forms.updateAll(formData, response.data));
-                    console.log("response.data = ", response.data);
-                    console.log("User = ", typeof (response.data.user));
-                    console.log("response.data.user = ", response.data.user);
-                    console.log("contextUserData = ", contextUserData);
+                    console.log(response.data);
+                    console.log("Resident = ", typeof(response.data.resident));
                 })
         }
     }, []);
+
 
 
     function handleInputChange(event: any) {
@@ -83,10 +89,13 @@ export default function ReportForms() {
         setFormData(result);
     }
 
+
     function handleTurnDirty(name: string) {
         const newFormData = forms.dirtyAndValidate(formData, name);
         setFormData(newFormData);
     }
+
+
 
     function handleSubmit(event: any) {
         event.preventDefault();
@@ -104,35 +113,45 @@ export default function ReportForms() {
         }
 
         const request = isEditing
-            ? reportService.updateRequest(requestBody)
-            : reportService.insertRequest(requestBody);
+            ? complaintService.updateRequest(requestBody)
+            : complaintService.insertRequest(requestBody);
 
         request.then(() => {
-            navigate("/reports");
+            navigate("/complaints");
         })
-            .catch((error) => {
-                console.log(console.log(requestBody));
-                console.log("ERRO -> ", error.response.data);
-            })
+        .catch( (error)=> {
+            console.log(console.log(requestBody));
+            console.log("ERRO -> ", error.response.data);
+        })
 
     }
 
-    return (
+    const complaintStatus = [ComplaintStatus];
 
+    return (
         <main>
             <section id="report-form-section" className="gkr-container">
                 <div className="gkr-report-form-container">
                     <form className="gkr-card gkr-form" onSubmit={handleSubmit}>
-                        <h2>Dados do Novo Relatório</h2>
+                        <h2>Dados da Nova Reclamação</h2>
                         <div className="gkr-form-controls-container">
                             <div>
                                 <FormInput
-                                    {...formData.user}
+                                    {...formData.resident}
                                     className="gkr-form-control"
                                     onTurnDirty={handleTurnDirty}
                                     onChange={handleInputChange}
                                 />
-                                <div className='gkr-form-error'>{formData.user.message}</div>
+                                <div className='gkr-form-error'>{formData.resident.message}</div>
+                            </div>
+                            <div>
+                                <FormInput
+                                    {...formData.unit}
+                                    className="gkr-form-control"
+                                    onTurnDirty={handleTurnDirty}
+                                    onChange={handleInputChange}
+                                />
+                                <div className='gkr-form-error'>{formData.unit.message}</div>
                             </div>
                             <div>
                                 <FormInput
@@ -161,10 +180,14 @@ export default function ReportForms() {
                                 />
                                 <div className='gkr-form-error'>{formData.text.message}</div>
                             </div>
+                            <div>
+                               <Select options={complaintStatus} />
+
+                            </div>
                         </div>
 
                         <div className="gkr-report-form-buttons">
-                            <Link to="/reports">
+                            <Link to="/complaints">
                                 <button type='reset' className="gkr-btn gkr-btn-white">Cancelar</button>
                             </Link>
                             <button type="submit" className="gkr-btn gkr-btn-blue">Salvar</button>

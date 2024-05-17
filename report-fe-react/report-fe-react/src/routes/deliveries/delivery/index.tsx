@@ -41,13 +41,19 @@ export default function Delivery() {
                         </p>
                     </div>
 
-                    <div id="deliveries-card-description">
-                        <label>Id: </label>
-                        <p className="deliveryId">{delivery.id}</p>
-                    </div>
+                    <div className="dflex">
+                        <div id="deliveries-card-description">
+                            <label>Id: </label>
+                            <p className="deliveryId">{delivery.id}</p>
+                            <div id="status" className="ctlStatus">
+                                <p className="peding-status">{delivery.status}</p>
+                            </div>
 
-                    <div id="status" className="ctlStatus">
-                        <p className="peding-status">{delivery.status}</p>
+                        </div>
+                        <div className="date date-rtl">
+                            <p>{delivery.date}</p>
+                        </div>
+
                     </div>
 
                 </div>

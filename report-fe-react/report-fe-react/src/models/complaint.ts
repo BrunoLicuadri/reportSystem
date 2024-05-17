@@ -1,7 +1,7 @@
 import { UserDTO } from "./user";
 
 export type complaintDTO = {
-    id: number;
+	id: number;
 	text: string;
 	status: string
 	date: string;
@@ -9,3 +9,10 @@ export type complaintDTO = {
 
 	resident: UserDTO;
 }
+
+export const ComplaintStatus = [
+	{ value: '0', label: 'RESOLVIDO' },
+	{ value: '1', label: 'PENDENTE' },
+	{ value: '2', label: 'FECHADO' }
+]
+

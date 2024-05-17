@@ -71,7 +71,7 @@ export default function DeliveryCard() {
                                                 <label>Destino: </label>
                                                 <p className="deliveryName">{deli.toUser.name}
                                                 </p>
-                                            </div>
+                                            </div >
 
                                             <div id="deliveries-card-description">
                                                 <label>Descrição: </label>
@@ -79,13 +79,19 @@ export default function DeliveryCard() {
                                                 </p>
                                             </div>
 
-                                            <div id="deliveries-card-description">
-                                                <label>Id: </label>
-                                                <p className="deliveryId">{deli.id}</p>
-                                            </div>
+                                            <div className="dflex">
+                                                <div id="deliveries-card-description">
+                                                    <label>Id: </label>
+                                                    <p className="deliveryId">{deli.id}</p>
+                                                    <div id="status" className="ctlStatus">
+                                                        <p className="peding-status">{deli.status}</p>
+                                                    </div>
 
-                                            <div id="status" className="ctlStatus">
-                                                <p className="peding-status">{deli.status}</p>
+                                                </div>
+                                                <div className="date date-rtl">
+                                                    <p>{deli.date}</p>
+                                                </div>
+
                                             </div>
 
                                         </div>
@@ -118,13 +124,19 @@ export default function DeliveryCard() {
                                                 </p>
                                             </div>
 
-                                            <div id="deliveries-card-description">
-                                                <label>Id: </label>
-                                                <p className="deliveryId">{deli.id}</p>
-                                            </div>
+                                            <div className="dflex">
+                                                <div id="deliveries-card-description">
+                                                    <label>Id: </label>
+                                                    <p className="deliveryId">{deli.id}</p>
+                                                    <div id="status" className="ctlStatus">
+                                                        <p className="peding-status">{deli.status}</p>
+                                                    </div>
 
-                                            <div id="status" className="ctlStatus">
-                                                <p className="peding-status">{deli.status}</p>
+                                                </div>
+                                                <div className="date date-rtl">
+                                                    <p>{deli.date}</p>
+                                                </div>
+
                                             </div>
 
                                         </div>

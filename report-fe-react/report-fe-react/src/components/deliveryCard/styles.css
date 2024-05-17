@@ -50,3 +50,9 @@
     color: var(--error-msg);
     padding: 0 10px;
 }
+
+.date-rtl{
+    width: 100%;
+    direction: rtl;
+    color: var(--dark-gray);
+}

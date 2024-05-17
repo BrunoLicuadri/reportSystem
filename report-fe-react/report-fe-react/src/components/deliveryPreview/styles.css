@@ -46,3 +46,9 @@
     padding: 0 10px;
     direction: rtl;
 }
+
+.date-rtl{
+    width: 100%;
+    direction: rtl;
+    color: var(--dark-gray);
+}

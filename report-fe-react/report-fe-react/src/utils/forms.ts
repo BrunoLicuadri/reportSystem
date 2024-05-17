@@ -22,21 +22,21 @@ export function toValues(inputs: any) {
 export function updateAll(inputs: any, newValues: any) {
 
     const newInputs: any = {};
-    
-        for (let name in inputs) {
-            newInputs[name] = { ...inputs[name], value: newValues[name] }
-        }
-    
-   /*
-    for (let field in inputs) {
-        if (typeof (newValues[field]) != "object") {
-            newInputs[field] = { ...inputs[field], value: newValues[field] }
-        }
-        else (
-            newInputs[field] = { ...inputs[field], value: newValues[field].name }
-        )
+
+    for (let name in inputs) {
+        newInputs[name] = { ...inputs[name], value: newValues[name] }
     }
-    */
+
+    /*
+     for (let field in inputs) {
+         if (typeof (newValues[field]) != "object") {
+             newInputs[field] = { ...inputs[field], value: newValues[field] }
+         }
+         else (
+             newInputs[field] = { ...inputs[field], value: newValues[field].name }
+         )
+     }
+     */
     return newInputs;
 }
 
